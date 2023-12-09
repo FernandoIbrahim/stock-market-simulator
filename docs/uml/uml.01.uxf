@@ -1,0 +1,149 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>72</y><w>351</w><h>225</h></coordinates><panel_attributes>Broker
+--
+
+- id
+
+ - bolsa: BolsaDeValores
+
+ - transacoes: List Transacao
+
+ - notificacoes: List String
+
+--
++ enviarOrdem(sigla: String, quantidade: int, tipo: String): void
+
++ enviarOrdemInfo(dataHora: String, String sigla): void
+
++ assinar(sigla: String): void
+
++ upData(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>432</x><y>45</y><w>414</w><h>225</h></coordinates><panel_attributes>BolsaDeValores
+--
+&lt;!-- Possivel mente não será implementado&gt;
+- acoes: List Acao
+
+- livroDeOfertas: LlvroDeOfertas
+
+&lt;!--------------------------&gt;
+
+- acoes: MAP &lt;Acao, LivroDeOferta&gt;
+
+--
+assinar(sigla: String, Broker broker): void
+
+addOperacao(sigla: String, quantidade: int, tipo: String, Broker broker): void
+
+possuiAcao(sigla:string): Acao
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>954</x><y>0</y><w>198</w><h>189</h></coordinates><panel_attributes>Acao
+--
+
+- id: String
+
+- Nome: String
+
+- desc: String
+
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>612</x><y>261</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>117</x><y>369</y><w>198</w><h>162</h></coordinates><panel_attributes>&lt;&lt;Inteface&gt;&gt;
+AcaoObserver
+
+--
+
+- update(): void
+
+- addOrdem(ordem): void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>837</x><y>126</y><w>135</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>927</x><y>369</y><w>153</w><h>81</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+OperacaoFactory
+--
+
+--
+ + criarOrdem(): Ordem</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>441</y><w>63</w><h>207</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>50;10;10;210</additional_attributes></element><element><id>UMLClass</id><coordinates><x>819</x><y>630</y><w>180</w><h>81</h></coordinates><panel_attributes>OrdemCompraFactory
+--
+
+--
+ + criarOrdem(): OrdemCompra</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>621</y><w>162</w><h>81</h></coordinates><panel_attributes>OrdemVendaFactory
+--
+
+--
+ + criarOrdem(): OrdemVenda</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1026</x><y>441</y><w>108</w><h>198</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;100;200</additional_attributes></element><element><id>Relation</id><coordinates><x>1071</x><y>405</y><w>405</w><h>27</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>430;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1584</x><y>756</y><w>180</w><h>99</h></coordinates><panel_attributes> OrdemVenda
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1359</x><y>774</y><w>180</w><h>99</h></coordinates><panel_attributes>OrdemCompra
+--
+
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1368</x><y>504</y><w>306</w><h>180</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+OrdemConcreta
+--
+
+acao: Acao
+
+quantidade: int 
+
+broker: Broker
+
+ativo: boolean
+
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1458</x><y>306</y><w>171</w><h>144</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+Ordem
+--
+--
+
++ atualizar(int quantidade)
+
++ alterarStatus()
+
++ ativo(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1530</x><y>441</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1467</x><y>675</y><w>45</w><h>117</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>30;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1593</x><y>675</y><w>45</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1143</x><y>72</y><w>801</w><h>522</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2= 1
+</panel_attributes><additional_attributes>590;550;870;550;870;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>342</x><y>162</y><w>108</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>306</x><y>423</y><w>153</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>324</y><w>360</w><h>324</h></coordinates><panel_attributes>livroDeOfertas
+--
+
+- ordens: List Ordem
+
+- transao: List Transacao
+
+- acao: Acao
+
+- AcaoObservers: List AcaoObserver
+
+--
+
++ addOrdem(Ordem): void
+
++ atualizarOrdem(Ordem ordem, int quantide): void
+
+- createTrasacao():
+
+- notifyAll(): void 
+
++ addObserver(Observer observer);
+
+- removeObeserver(Observer observer);
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>207</x><y>288</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>945</x><y>729</y><w>162</w><h>81</h></coordinates><panel_attributes>InfoFactory
+--
+
+--
+ + criarOrdem(): OrdemInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>441</y><w>36</w><h>306</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;20;320</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1692</x><y>396</y><w>180</w><h>90</h></coordinates><panel_attributes>OrdemInfo
+--
+acao: Acao
+
+data: LocalDate
+
+ativo: boolean
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1620</x><y>333</y><w>180</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;10;180;70</additional_attributes></element><element><id>Relation</id><coordinates><x>837</x><y>225</y><w>198</w><h>162</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2= 1
+</panel_attributes><additional_attributes>180;160;180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1143</x><y>108</y><w>738</w><h>306</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2= 1
+</panel_attributes><additional_attributes>780;320;780;20;10;20</additional_attributes></element></diagram>
