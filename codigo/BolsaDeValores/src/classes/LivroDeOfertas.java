@@ -3,6 +3,8 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.ordens.Ordem;
+
 public class LivroDeOfertas {
 
     private List<Ordem> ordens;
