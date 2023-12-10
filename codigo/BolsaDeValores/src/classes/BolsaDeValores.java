@@ -28,10 +28,12 @@ public class BolsaDeValores {
 
     public LivroDeOfertas possuiAcao(String sigla) {
         LivroDeOfertas livroDeOfertas =  acoes.get(sigla);
-        if(livroDeOfertas == null)
+        if(livroDeOfertas == null){
             //throw new Exception()
-        else
+        }
+        else{
             return livroDeOfertas;
+        }
     }
 
 

@@ -116,13 +116,15 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 
 + atualizarOrdem(Ordem ordem, int quantide): void
 
+-  addTransacao(Transacao) void
+
 - createTrasacao(): void
 
 - notifyAll(): void 
 
 + addObserver(Observer observer): void
 
-- removeObeserver(Observer observer): void
+- removeObeserver(AcaoObserver acaoObserver): void
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>207</x><y>288</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>945</x><y>729</y><w>162</w><h>81</h></coordinates><panel_attributes>InfoFactory
 --
 
