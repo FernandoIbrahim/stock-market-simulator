@@ -2,8 +2,8 @@ package classes;
 
 public class Acao {
     
-    String id;
-    String nome;
-    String desc;
+   private String id;
+   private String nome;
+   private String desc;
 
 }
