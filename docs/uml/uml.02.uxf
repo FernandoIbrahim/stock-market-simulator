@@ -19,14 +19,15 @@
 + upData(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>432</x><y>45</y><w>414</w><h>243</h></coordinates><panel_attributes>BolsaDeValores
 --
 
-- acoes: MAP &lt;Acao, LivroDeOferta&gt;
+- livroDeOfertas: MAP &lt;Acao, LivroDeOferta&gt;
 
+- acoes: List Acao
 --
 assinar(sigla: String, Broker broker): void
 
 addOperacao(sigla: String, quantidade: int, tipo: String, Broker broker): void
 
-possuiAcao(sigla:string): Acao
+possuiAcao(sigla:string): LivroDeOfertas
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>954</x><y>0</y><w>198</w><h>189</h></coordinates><panel_attributes>Acao
 --
 
@@ -115,13 +116,13 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 
 + atualizarOrdem(Ordem ordem, int quantide): void
 
-- createTrasacao():
+- createTrasacao(): void
 
 - notifyAll(): void 
 
-+ addObserver(Observer observer);
++ addObserver(Observer observer): void
 
-- removeObeserver(Observer observer);
+- removeObeserver(Observer observer): void
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>207</x><y>288</y><w>27</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>945</x><y>729</y><w>162</w><h>81</h></coordinates><panel_attributes>InfoFactory
 --
 
