@@ -1,4 +1,7 @@
-package classes;
+package classes.ordens;
+
+import classes.Acao;
+import classes.Broker;
 
 public abstract class OrdemConcrets implements Ordem{
     private Acao acao;

@@ -3,6 +3,8 @@ package classes;
 import java.util.HashMap;
 import java.util.Map;
 
+import classes.ordens.Ordem;
+
 public class BolsaDeValores {
 
     private static BolsaDeValores bolsaDeValores;

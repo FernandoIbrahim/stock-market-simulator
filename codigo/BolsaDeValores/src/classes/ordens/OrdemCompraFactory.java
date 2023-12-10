@@ -1,4 +1,4 @@
-package classes;
+package classes.ordens;
 
 public class OrdemCompraFactory implements OperacaoFactory {
 
