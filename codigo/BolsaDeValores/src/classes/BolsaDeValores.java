@@ -14,9 +14,8 @@ public class BolsaDeValores {
     }
 
     public void assinar(String sigla, Broker broker){
-        if(acoes.containsKey(sigla)){
-            
-        }
+        LivroDeOfertas livro = possuiAcao(sigla);
+        livro
     }
 
     public static BolsaDeValores getInstance() {

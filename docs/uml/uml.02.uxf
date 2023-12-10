@@ -118,9 +118,9 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 
 -  addTransacao(Transacao) void
 
-- createTrasacao(): void
+- createTrasacao(Ordem ordem1, ordem2): transacao
 
-- notifyAll(): void 
+- notifyAllObservers(): void 
 
 + addObserver(Observer observer): void
 
