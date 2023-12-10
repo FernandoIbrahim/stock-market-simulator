@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Broker {
+public class Broker implements AcaoObserver{
 
     private BolsaDeValores bolsa;
     private List<Transacao> trasacoes;
@@ -18,20 +18,27 @@ public class Broker {
         id = countId++;
     }
 
-    public void enviarOrdem(String sigla, int quantidade, String tipo){
-        bolsa.addOperacao(sigla, quantidade, tipo);
+    public void enviarOrdem(String ordem){  // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
+        bolsa.addOperacao(ordem);
     }
 
-    public void enviarOrdemInfo(String sigla, LocalDateTime dataHora){
-        bolsa.addOperacao(sigla, dataHora);
+    public void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
+        bolsa.addOperacao(ordem);
     }
 
     public void assinar(String sigla){
         bolsa.assinar(sigla, this);
     }
 
-    private void upDate(){
-        
+    //! AlterarParaAddNotificação recebendo uma String 
+    public void addOrdem(Ordem ordem){    
+
     }
+
+    //!Verificar forma de implementação dos determinados métods
+    public void update(){
+
+    }
+
 
 }
