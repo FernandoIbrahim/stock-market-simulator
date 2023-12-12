@@ -7,8 +7,8 @@ public class OrdemVenda extends OrdemConcrets {
 
     private final OrderType tOrderType = OrderType.VENDA;
 
-    public OrdemVenda(Acao acao, int quantidade, Broker broker, boolean ativo){
-        super(acao, quantidade, broker, ativo);
+    public OrdemVenda(Acao acao, int quantidade, double valor,Broker broker){
+        super(acao, quantidade,valor, broker);
     }
 
     @Override

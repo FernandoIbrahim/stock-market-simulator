@@ -8,13 +8,14 @@ public abstract class OrdemConcrets implements Ordem{
     private int quantidade;
     private Broker broker;
     private boolean ativo;
+    private double valor ;
     
 
-     public OrdemConcrets(Acao acao, int quantidade, Broker broker, boolean ativo){
+     public OrdemConcrets(Acao acao, int quantidade, double valor,Broker broker){
         this.acao = acao;
         this.quantidade = quantidade;
         this.broker = broker;
-        this.ativo = ativo;
+        this.ativo = true;
      }
      
     
@@ -44,6 +45,14 @@ public abstract class OrdemConcrets implements Ordem{
      public void atualizar(int quantidade) {
          this.quantidade = quantidade;
      }
+
+     public double getValor() {
+         return valor;
+     }
+
+        public void setValor(double valor) {
+            this.valor = valor;
+        }
 
 
 }

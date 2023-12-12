@@ -1,13 +1,18 @@
 package classes;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import classes.ordens.Ordem;
+import classes.ordens.OrdemCompra;
+import classes.ordens.OrdemConcrets;
+import classes.ordens.OrdemVenda;
+import classes.ordens.OrderType;
 
 public class LivroDeOfertas {
 
-    private List<Ordem> ordens;
+    private List<OrdemConcrets> ordens;
     private List<Transacao> transacoes;
     private Acao acao;
     private List<AcaoObserver> acaoObservers;
@@ -20,26 +25,34 @@ public class LivroDeOfertas {
         this.acao = acao;
     }
 
-    public void addOrdem(Ordem ordem) {
+    public void addOrdem(OrdemConcrets ordem) {
         ordens.add(ordem);
 
     }
 
     public void atualizarOrdem(Ordem ordem, int quantidade) {
 
+ 
+   }
+   
+
+
+    private void createTransacao(Ordem ordem, LocalDateTime datahora, int quantidade, double valor , Acao acao) {
+        Transacao transacao = new Transacao(ordem, datahora, quantidade, valor , acao);
     }
 
-    private void createTransacao() {
-        Transacao transacao
-    }
+    private void verficarOrdens(List<? extends OrdemConcrets> ordencompra, List<? extends OrdemConcrets> ordensvenda) {
 
-    private void addTransacao(){
+
+        
+
+        
         
     }
 
-    public void notifyAllObservers() {
+    public void notifyAllObservers(Ordem ordem) {
         for (AcaoObserver acaoObserver : acaoObservers) {
-            acaoObserver.update();
+            acaoObserver.update(ordem.toString());
         }
 
     }

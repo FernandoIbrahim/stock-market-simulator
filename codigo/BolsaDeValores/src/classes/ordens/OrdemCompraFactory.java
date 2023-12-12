@@ -6,9 +6,9 @@ import classes.Broker;
 public class OrdemCompraFactory implements OperacaoFactory {
 
     
-    public Ordem criarOrdem(Acao acao, int quantidade, Broker broker, boolean ativo){
+    public Ordem criarOrdem(Acao acao, int quantidade, double valor,Broker broker){
 
-        return new OrdemCompra(acao,quantidade,broker,ativo);
+        return new OrdemCompra(acao,quantidade,valor,broker);
     }
         
     

@@ -5,7 +5,7 @@ import classes.Broker;
 
 public interface OperacaoFactory {
 
-    public Ordem criarOrdem(Acao acao, int quantidade, Broker broker, boolean ativo);
+    public Ordem criarOrdem(Acao acao, int quantidade, double valor,Broker broker);
     
     
 }
