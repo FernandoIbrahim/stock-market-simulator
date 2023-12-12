@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import classes.ordens.Ordem;
+import classes.ordens.*;
 
 public class Broker implements AcaoObserver{
 
@@ -21,11 +21,11 @@ public class Broker implements AcaoObserver{
     }
 
     public void enviarOrdem(String ordem){  // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
-        bolsa.addOperacao(ordem);
+        bolsa.addOperacao(ordem, this);
     }
 
     public void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
-        bolsa.addOperacao(ordem);
+        bolsa.addOperacao(ordem, this);
     }
 
     public void assinar(String sigla){
