@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>48</y><w>234</w><h>150</h></coordinates><panel_attributes>Broker
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>64</y><w>312</w><h>200</h></coordinates><panel_attributes>Broker
 --
 
 - id
@@ -16,7 +16,7 @@
 
 + assinar(sigla: String): void
 
-+ upData(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>30</y><w>276</w><h>162</h></coordinates><panel_attributes>BolsaDeValores
++ upData(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>40</y><w>368</w><h>216</h></coordinates><panel_attributes>BolsaDeValores
 --
 
 - livroDeOfertas: MAP &lt;Acao, LivroDeOferta&gt;
@@ -30,7 +30,8 @@
 - possuiAcao(sigla:string): LivroDeOfertas
 
 + addOperacao(operacao String, Broker broker);
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>636</x><y>0</y><w>132</w><h>126</h></coordinates><panel_attributes>Acao
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>848</x><y>0</y><w>176</w><h>152</h></coordinates><panel_attributes>Acao
 --
 
 - id: String
@@ -42,40 +43,39 @@
 --
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>408</x><y>186</y><w>18</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>78</x><y>246</y><w>132</w><h>108</h></coordinates><panel_attributes>&lt;&lt;Inteface&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>248</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>104</x><y>328</y><w>176</w><h>144</h></coordinates><panel_attributes>&lt;&lt;Inteface&gt;&gt;
 AcaoObserver
 
 --
 
 - update(String notificacao): void
 
-- addOrdem(Ordem ordem): void
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>84</y><w>90</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>618</x><y>246</y><w>102</w><h>54</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>744</x><y>112</y><w>120</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>824</x><y>328</y><w>136</w><h>72</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 OperacaoFactory
 --
 
 --
- + criarOrdem(): Ordem</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>624</x><y>294</y><w>42</w><h>138</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>50;10;10;210</additional_attributes></element><element><id>UMLClass</id><coordinates><x>546</x><y>420</y><w>120</w><h>54</h></coordinates><panel_attributes>OrdemCompraFactory
+ + criarOrdem(): Ordem</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>832</x><y>392</y><w>56</w><h>184</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>50;10;10;210</additional_attributes></element><element><id>UMLClass</id><coordinates><x>728</x><y>560</y><w>160</w><h>72</h></coordinates><panel_attributes>OrdemCompraFactory
 --
 
 --
- + criarOrdem(): OrdemCompra</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>414</y><w>108</w><h>54</h></coordinates><panel_attributes>OrdemVendaFactory
+ + criarOrdem(): OrdemCompra</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>552</y><w>144</w><h>72</h></coordinates><panel_attributes>OrdemVendaFactory
 --
 
 --
- + criarOrdem(): OrdemVenda</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>294</y><w>72</w><h>132</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;100;200</additional_attributes></element><element><id>Relation</id><coordinates><x>714</x><y>270</y><w>270</w><h>18</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>430;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1092</x><y>588</y><w>120</w><h>66</h></coordinates><panel_attributes> OrdemVenda
+ + criarOrdem(): OrdemVenda</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>912</x><y>392</y><w>96</w><h>176</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;100;200</additional_attributes></element><element><id>Relation</id><coordinates><x>952</x><y>360</y><w>360</w><h>24</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>430;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1456</x><y>784</y><w>160</w><h>88</h></coordinates><panel_attributes> OrdemVenda
 --
 Tipo: ENUM
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>594</y><w>120</w><h>66</h></coordinates><panel_attributes>OrdemCompra
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1200</x><y>792</y><w>160</w><h>88</h></coordinates><panel_attributes>OrdemCompra
 --
 Tipo: ENUM
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>444</y><w>204</w><h>120</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1240</x><y>592</y><w>272</w><h>160</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 OrdemConcreta
 --
 
@@ -87,21 +87,23 @@ broker: Broker
 
 ativo: boolean
 
+valor: double
+
 --
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>972</x><y>204</y><w>114</w><h>96</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1296</x><y>272</y><w>152</w><h>128</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 Ordem
 --
 --
 
 + getType()
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>294</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>972</x><y>558</y><w>54</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>558</y><w>48</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;50</additional_attributes></element><element><id>Relation</id><coordinates><x>762</x><y>54</y><w>534</w><h>450</h></coordinates><panel_attributes>lt=-
++ toString();</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>392</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1296</x><y>744</y><w>72</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1440</x><y>744</y><w>64</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>72</y><w>712</w><h>600</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2= 1
-</panel_attributes><additional_attributes>620;720;870;720;870;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>228</x><y>108</y><w>72</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
-m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>204</x><y>282</y><w>102</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>294</x><y>216</y><w>240</w><h>258</h></coordinates><panel_attributes>livroDeOfertas
+</panel_attributes><additional_attributes>620;720;870;720;870;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>144</y><w>96</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>392</x><y>288</y><w>320</w><h>344</h></coordinates><panel_attributes>livroDeOfertas
 --
 
 - ordens: List OrdemConcreta
@@ -116,11 +118,11 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 
 +pesquisarOperacaoInfo(OrdemInfo)
 
-+ addOrdem(OrdemConcreta): void
++ addOrdem(ordem: OrdemConcreta): void
 
-+ atualizarOrdem(Ordem ordem, int quantide): void
++ atualizarOrdem(ordem OrdemCocreta, quantidade int): void
 
--  addTransacao(Transacao) void
+- verificacaoTransacao(ordem OrdemCocreta1, OrdemCocreta2 );
 
 - createTrasacao(Ordem ordem1, ordem2): transacao
 
@@ -129,11 +131,11 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 + addObserver(Observer observer): void
 
 - removeObeserver(AcaoObserver acaoObserver): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>138</x><y>192</y><w>18</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>486</y><w>108</w><h>54</h></coordinates><panel_attributes>OrdemInfoFactory
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>256</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>648</y><w>144</w><h>72</h></coordinates><panel_attributes>OrdemInfoFactory
 --
 
 --
- + criarOrdem(): OrdemInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>294</y><w>24</w><h>204</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;20;320</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1128</x><y>264</y><w>120</w><h>84</h></coordinates><panel_attributes>OrdemInfo
+ + criarOrdem(): OrdemInfo</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>896</x><y>392</y><w>32</w><h>272</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;20;320</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1504</x><y>352</y><w>160</w><h>112</h></coordinates><panel_attributes>OrdemInfo
 --
 
 Tipo: ENUM
@@ -143,13 +145,13 @@ Acao: acao
 data: LocalDateTime
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>222</y><w>120</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;10;180;70</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>150</y><w>132</w><h>108</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1440</x><y>296</y><w>160</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;10;180;70</additional_attributes></element><element><id>Relation</id><coordinates><x>744</x><y>200</y><w>176</w><h>144</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2= 1
-</panel_attributes><additional_attributes>180;160;180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>762</x><y>72</y><w>492</w><h>204</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>180;160;180;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>96</y><w>656</w><h>272</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2= 1
-</panel_attributes><additional_attributes>780;320;780;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>972</x><y>330</y><w>114</w><h>90</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+</panel_attributes><additional_attributes>780;320;780;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1296</x><y>440</y><w>152</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 OrdemTransacao
 --
 --
@@ -158,12 +160,12 @@ OrdemTransacao
 
 + alterarStatus()
 
-+ ativo(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>414</y><w>18</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>342</x><y>534</y><w>126</w><h>144</h></coordinates><panel_attributes>Transacao
++ ativo(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1360</x><y>552</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>712</y><w>168</w><h>192</h></coordinates><panel_attributes>Transacao
 --
 
-- ordemCompra: OrdemCompra
+- ordem: OrdemCompra
 
-- ordemVenda: OrdemVenda
+- ordem: OrdemVenda
 
 - dataHora: LocalDateTime
 
@@ -172,4 +174,5 @@ OrdemTransacao
 - valor: Double
 
 - acao: Acao
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>468</y><w>18</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>462</x><y>636</y><w>450</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>730;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>648</y><w>738</w><h>78</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>1210;10;1210;110;10;110;10;50</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>552</x><y>624</y><w>24</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>616</x><y>848</y><w>600</w><h>24</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>730;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>512</x><y>864</y><w>984</w><h>104</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>1210;10;1210;110;10;110;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>272</x><y>384</y><w>136</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..n</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element></diagram>

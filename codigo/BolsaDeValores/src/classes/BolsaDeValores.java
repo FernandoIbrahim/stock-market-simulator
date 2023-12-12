@@ -89,7 +89,7 @@ public class BolsaDeValores {
     */
     private void captureOrdem(String tipo, Acao acao, int quantidade,double preco, Broker broker, OperacaoFactory operacaoFactory ){
 
-        Ordem ordem = operacaoFactory.criarOrdem(tipo, acao, quantidade, preco, broker);
+        OrdemConcrets ordem = operacaoFactory.criarOrdem(tipo, acao, quantidade, preco, broker);
         
         LivroDeOfertas livro = possuiLivroDeOfertas(acao.getSigla());
         livro.addOrdem(ordem);
