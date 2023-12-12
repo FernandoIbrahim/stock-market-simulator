@@ -30,14 +30,17 @@ public class LivroDeOfertas {
     }
 
     private void createTransacao() {
-
+        Transacao transacao
     }
 
     private void addTransacao(){
         
     }
 
-    private void notifyAllObservers() {
+    public void notifyAllObservers() {
+        for (AcaoObserver acaoObserver : acaoObservers) {
+            acaoObserver.update();
+        }
 
     }
     
