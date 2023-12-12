@@ -30,7 +30,7 @@
 - possuiAcao(sigla:string): LivroDeOfertas
 
 + addOperacao(operacao String, Broker broker);
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>636</x><y>0</y><w>132</w><h>126</h></coordinates><panel_attributes>Acao
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>636</x><y>0</y><w>132</w><h>114</h></coordinates><panel_attributes>Acao
 --
 
 - id: String
@@ -161,9 +161,9 @@ OrdemTransacao
 + ativo(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>414</y><w>18</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>342</x><y>534</y><w>126</w><h>144</h></coordinates><panel_attributes>Transacao
 --
 
-- ordemCompra: OrdemCompra
+- ordem: OrdemCompra
 
-- ordemVenda: OrdemVenda
+- ordem: OrdemVenda
 
 - dataHora: LocalDateTime
 
