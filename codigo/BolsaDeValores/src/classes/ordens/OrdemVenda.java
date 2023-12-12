@@ -5,20 +5,16 @@ import classes.Broker;
 
 public class OrdemVenda extends OrdemConcrets {
 
+    private final OrderType tOrderType = OrderType.VENDA;
 
     public OrdemVenda(Acao acao, int quantidade, Broker broker, boolean ativo){
         super(acao, quantidade, broker, ativo);
     }
-    
-    public void atualizar(int quantidade){
-        
+
+    @Override
+    public OrderType getType() {
+        return tOrderType;
     }
     
-    public void alterarStatus(){
-
-    }
-    public boolean getAtivo(){
-
-
-    }
+   
 }
