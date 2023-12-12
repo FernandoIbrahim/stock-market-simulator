@@ -30,6 +30,7 @@
 - possuiAcao(sigla:string): LivroDeOfertas
 
 + addOperacao(operacao String, Broker broker);
+
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>848</x><y>0</y><w>176</w><h>152</h></coordinates><panel_attributes>Acao
 --
 
