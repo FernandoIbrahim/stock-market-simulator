@@ -43,7 +43,29 @@ public class LivroDeOfertas {
 
     private void verficarOrdens(List<? extends OrdemConcrets> ordencompra, List<? extends OrdemConcrets> ordensvenda) {
 
-
+        for (OrdemConcrets ordemCompra : ordencompra) {
+            for (OrdemConcrets ordemVenda : ordensvenda) {
+                if (ordemCompra.getValor() >= ordemVenda.getValor()) {
+                    int quantidade = ordemCompra.getQuantidade() - ordemVenda.getQuantidade();
+                    if (quantidade > 0) {
+                        createTransacao(ordemCompra, LocalDateTime.now(), ordemVenda.getQuantidade(),
+                                ordemVenda.getValor(), acao);
+                        ordemCompra.atualizar(quantidade);
+                        ordensvenda.remove(ordemVenda);
+                    } else if (quantidade < 0) {
+                        createTransacao(ordemCompra, LocalDateTime.now(), ordemCompra.getQuantidade(),
+                                ordemVenda.getValor(), acao);
+                        ordemVenda.atualizar(quantidade);
+                        ordencompra.remove(ordemCompra);
+                    } else {
+                        createTransacao(ordemCompra, LocalDateTime.now(), ordemCompra.getQuantidade(),
+                                ordemVenda.getValor(), acao);
+                        ordencompra.remove(ordemCompra);
+                        ordensvenda.remove(ordemVenda);
+                    }
+                }
+            }
+        }
         
 
         
