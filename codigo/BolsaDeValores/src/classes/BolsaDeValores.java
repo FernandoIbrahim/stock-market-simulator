@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import classes.ordens.*;
@@ -76,14 +77,16 @@ public class BolsaDeValores {
             case "INFO":
                 Acao acao3 = possuiAcao(operacaoSlipt[1]); 
                 LocalDateTime localDateTime = LocalDateTime.parse(operacaoSlipt[2], formatter);
-                sendOperacaoInfo(tipo, acao3, localDateTime, ordemInfoFactory, broker)
+                sendOperacaoInfo(tipo, acao3, localDateTime, ordemInfoFactory, broker);
                 break;
         }
 
     }
 
 
-
+    /* Faz a construção das Ordem "COMPRA/VENDA" via métodos factory, passando seus atributos por parâmetro.
+        após isso enviar essa ordem ao livroDeOfertas da determinada acao;
+    */
     private void captureOrdem(String tipo, Acao acao, int quantidade,double preco, Broker broker, OperacaoFactory operacaoFactory ){
 
         Ordem ordem = operacaoFactory.criarOrdem(tipo, acao, quantidade, preco, broker);
@@ -92,7 +95,9 @@ public class BolsaDeValores {
         livro.addOrdem(ordem);
     }
 
-
+    /* Faz a construção das Operacao info via métodos factory, passando seus atributos por parâmetro.
+        após isso enviar essa OperacaoInfo para pesquisa das ordens no determinado horario;
+    */
     public List<Ordem> sendOperacaoInfo(String tipo, Acao acao, LocalDateTime localDateTime, Broker broker, OperacaoFactory operacaoFactory ){
         
         OrdemInfo ordem = operacaoFactory.criarOrdem(tipo, acao, localDateTime, broker);
