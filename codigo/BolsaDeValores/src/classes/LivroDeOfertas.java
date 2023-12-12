@@ -3,6 +3,8 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.ordens.Ordem;
+
 public class LivroDeOfertas {
 
     private List<Ordem> ordens;
@@ -45,6 +47,13 @@ public class LivroDeOfertas {
      
     public void removeObserver(AcaoObserver acaoObserver){
         acaoObservers.remove(acaoObserver);
+    }
+
+    public Acao getAcao() {
+        return acao;
+    }
+    public void setAcao(Acao acao) {
+        this.acao = acao;
     }
 
 }
