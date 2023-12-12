@@ -23,13 +23,13 @@
 
 - acoes: List Acao
 --
-assinar(sigla: String, Broker broker): void
++ assinar(sigla: String, Broker broker): void
 
-captureOrdem(sigla: String, quantidade: int, tipo: String, Broker broker): void
+- captureOrdem(sigla: String, quantidade: int, tipo: String, Broker broker): void
 
-possuiAcao(sigla:string): LivroDeOfertas
+- possuiAcao(sigla:string): LivroDeOfertas
 
-addOperacao(operacao String, Broker broker);
++ addOperacao(operacao String, Broker broker);
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>636</x><y>0</y><w>132</w><h>126</h></coordinates><panel_attributes>Acao
 --
 
@@ -47,7 +47,7 @@ AcaoObserver
 
 --
 
-- update(): void
+- update(String notificacao): void
 
 - addOrdem(Ordem ordem): void
 
@@ -124,7 +124,7 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 
 - createTrasacao(Ordem ordem1, ordem2): transacao
 
-- notifyAllObservers(): void 
+- notifyAllObservers(String notificao): void 
 
 + addObserver(Observer observer): void
 
@@ -158,4 +158,18 @@ OrdemTransacao
 
 + alterarStatus()
 
-+ ativo(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>414</y><w>18</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element></diagram>
++ ativo(): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>414</y><w>18</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>342</x><y>534</y><w>126</w><h>144</h></coordinates><panel_attributes>Transacao
+--
+
+- ordemCompra: OrdemCompra
+
+- ordemVenda: OrdemVenda
+
+- dataHora: LocalDateTime
+
+- quantidade: int
+
+- valor: Double
+
+- acao: Acao
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>468</y><w>18</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>462</x><y>636</y><w>450</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>730;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>384</x><y>648</y><w>738</w><h>78</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>1210;10;1210;110;10;110;10;50</additional_attributes></element></diagram>
