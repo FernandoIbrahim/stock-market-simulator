@@ -31,21 +31,25 @@ public class TransacaoManager {
 
     private static Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LocalDateTime dataHora, int quantidade, double valor, Acao acao) {
         return new Transacao(ordemCompra, ordemVenda, dataHora, quantidade, valor, acao);
-        // Add logic to handle the created transaction as needed
     }
 
     private static void atualizarOrdens(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, int quantidadeTransacao) {
-        if (ordemCompra.getQuantidade() > quantidadeTransacao) {
-            ordemCompra.atualizar(ordemCompra.getQuantidade() - quantidadeTransacao);
-        } else {
-            ordemCompra.alterarStatus();
-        }
+        int comparacao = ordemCompra.compareTo(ordemVenda);
 
-        if (ordemVenda.getQuantidade() > quantidadeTransacao) {
-            ordemVenda.atualizar(ordemVenda.getQuantidade() - quantidadeTransacao);
-        } else {
+        if( comparacao> 0){
+            ordemCompra.atualizar(ordemCompra.getQuantidade() - quantidadeTransacao);
             ordemVenda.alterarStatus();
         }
+        
+        else if(comparacao < 0){
+            ordemVenda.atualizar(ordemCompra.getQuantidade() - quantidadeTransacao);
+            ordemCompra.alterarStatus();
+        }
+        else{
+            ordemCompra.alterarStatus();
+            ordemVenda.alterarStatus(); 
+        }
+
     }
     
 }

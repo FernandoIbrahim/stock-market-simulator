@@ -29,7 +29,6 @@ public class    LivroDeOfertas {
 
     public void addOrdem(OrdemConcrets ordem) {
         ordens.add(ordem);
-
     }
 
     public String pesquisarOperacaoInfo(OrdemInfo ordemInfo){
@@ -108,5 +107,9 @@ public class    LivroDeOfertas {
 
     public List<OrdemConcrets> getOrdens() {
         return ordens;
+    }
+
+    public List<Transacao> getTransacoes() {
+        return transacoes;
     }
 }

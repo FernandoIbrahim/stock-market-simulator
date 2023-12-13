@@ -56,6 +56,8 @@ public class TesteLivroDeOfetas {
         bolsa.addOperacaoCompraVenda("VENDA;AAPL;20;700.50;BKR", broker);
         bolsa.addOperacaoCompraVenda("VENDA;AAPL;20;1100.50;BKR", broker);
         bolsa.addOperacaoCompraVenda("COMPRA;AAPL;20;1200.50;BKR", broker);
+
+
     }
 
     @Test
