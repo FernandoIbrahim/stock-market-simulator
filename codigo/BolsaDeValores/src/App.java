@@ -1,34 +1,74 @@
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-import classes.Transacao;
+import classes.*;
+import classes.ordens.*;
 
 public class App {
 
     
-
+    private static Lock lock = new ReentrantLock();
     public static void main(String[] args) throws InterruptedException {
+        LocalDateTime agora = LocalDateTime.now();
 
+    
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
-         for (int i = 0; i < 5; i++) {
-            Runnable transacao = () -> {
-                try {
-                    // Lógica para gerar transações aleatórias
-                Random random = new Random();
-                int quantidade = random.nextInt(100);
-                double preco = 100 + (200 - 100) * random.nextDouble(); // Preço entre 100 e 200
-                
-                Transacao t = new Transacao(acao, quantidade, preco, random.nextBoolean());
-                // Lógica para processar a transação (ex: registrar, atualizar dados, etc.)
-                System.out.println("Transação realizada: " + t);
+        
+        String dataFormatada = agora.format(formato);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+
+             Runnable ordemCompra = () ->{
+
+                try{
+                    lock.lock();
+                    
+                    BolsaDeValores bolsa = BolsaDeValores.getInstancia();
+                    Broker broker = new Broker(bolsa);
+                    broker.assinar("PETR4");
+                    Acao acao1 = new Acao("10","PETR4","Petrobras");
+                    Ordem ordem = new OrdemCompra(acao1, 100, 26.46, broker);
+                    LivroDeOfertas livroDeOfertas = bolsa.possuiLivroDeOfertas("PETR4");
+                   
+                    System.out.println("Ordem criada: " + ordem);
+                    bolsa.addAcao(acao1);
+                    bolsa.addOperacaoCompraVenda(ordem.toString(), broker);
+                    
+                    System.out.println("Ordem criada: " + ordem);
+                    
+                    Thread.sleep(1000);
+                    lock.unlock();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
-            };
 
-            Thread thread = new Thread(transacao);
-            thread.start();
+                }
+             }
+
+                Runnable ordemVenda = () ->{
+                    try{
+                        lock.lock();
+                        BolsaDeValores bolsa = BolsaDeValores.getInstancia();
+                        bolsa.adicionarOrdem(ordem);
+                    
+                        System.out.println("Ordem criada: " + ordem);
+                        Thread.sleep(1000);
+                        lock.unlock();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+    
+                    }
+                }
+          
+            Thread tOrdemCompra = new Thread(ordemCompra);
+            Thread tOrdemVenda = new Thread(ordemVenda);
+            executor.submit(tOrdemVenda);
+            executor.submit(tOrdemCompra);
 
     
                 
@@ -36,5 +76,4 @@ public class App {
         }
 
         
-}
 }
