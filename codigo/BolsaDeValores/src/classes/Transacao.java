@@ -3,17 +3,20 @@ package classes;
 import java.time.LocalDateTime;
 
 import classes.ordens.Ordem;
+import classes.ordens.OrdemConcrets;
 
 public class Transacao {
-    private Ordem ordem ;
+    private OrdemConcrets ordemCompra ;
+    private OrdemConcrets ordemVenda ;
     private LocalDateTime dataHora;
     private int quantidade;
     private double valor;
     private Acao acao;
 
-    public Transacao(Ordem ordem, LocalDateTime datahora, int quantidade, double valor , Acao acao){
+    public Transacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LocalDateTime datahora, int quantidade, double valor , Acao acao){
 
-        this.ordem = ordem;
+        this.ordemCompra = ordemCompra;
+        this.ordemVenda = ordemVenda;
         this.dataHora = datahora;
         this.quantidade = quantidade;
         this.valor = valor;
