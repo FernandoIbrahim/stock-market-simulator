@@ -60,7 +60,7 @@ public class BolsaDeValores {
 
     //! Finalizar ao Implementar os Factories para realizar a criação da Ordem
 
-    public void addOperacaoCompraVenda(String operacao, Broker broker){
+    public synchronized void addOperacaoCompraVenda(String operacao, Broker broker){
 
         String[] operacaoSlipt = operacao.split(";");
         String tipo = operacaoSlipt[0].toUpperCase(); 
@@ -76,7 +76,7 @@ public class BolsaDeValores {
     }   
 
 
-    public String pesquisarOrdemInfo(String operacao, Broker broker){
+    public synchronized  String pesquisarOrdemInfo(String operacao, Broker broker){
         String[] operacaoSlipt = operacao.split(";");
         Acao acao2 = possuiAcao(operacaoSlipt[1]);
         LocalDateTime data = LocalDateTime.parse(operacaoSlipt[2], dateFormatter);
@@ -87,7 +87,7 @@ public class BolsaDeValores {
     /* Faz a construção das Operacao info via métodos factory, passando seus atributos por parâmetro.
         após isso enviar essa OperacaoInfo para pesquisa das ordens no determinado horario;
     */
-    public String sendOperacaoInfo( Acao acao, LocalDateTime localDateTime, Broker broker ){
+    public synchronized String sendOperacaoInfo( Acao acao, LocalDateTime localDateTime, Broker broker ){
         OrdemInfo ordem = new OrdemInfo(acao, localDateTime, broker);
         LivroDeOfertas livro = possuiLivroDeOfertas(acao.getSigla());
         return livro.pesquisarOperacaoInfo(ordem);

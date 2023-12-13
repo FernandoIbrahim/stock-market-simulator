@@ -21,11 +21,11 @@ public class Broker implements AcaoObserver{
         id = countId++;
     }
 
-    public void enviarOrdem(String ordem){  // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
+    public synchronized void enviarOrdem(String ordem){  // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
         bolsa.addOperacaoCompraVenda(ordem, this);
     }
 
-    public void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
+    public synchronized void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
         bolsa.pesquisarOrdemInfo(ordem, this);
     }
 

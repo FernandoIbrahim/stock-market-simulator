@@ -13,7 +13,7 @@ import classes.ordens.OrdemInfo;
 import classes.ordens.OrdemVenda;
 import classes.ordens.OrderType;
 
-public class   LivroDeOfertas {
+public class  LivroDeOfertas {
 
     private List<OrdemConcrets> ordens;
     private List<Transacao> transacoes;
@@ -28,14 +28,14 @@ public class   LivroDeOfertas {
         this.acao = acao;
     }
 
-    public void addOrdem(OrdemConcrets ordem) {
+    public synchronized void addOrdem (OrdemConcrets ordem) {
         ordens.add(ordem);
         System.out.println(ordem.getNotificacao());
         notifyAllObservers(ordem);
         verficarOrdens();
     }
 
-    public String pesquisarOperacaoInfo(OrdemInfo ordemInfo){
+    public synchronized String pesquisarOperacaoInfo(OrdemInfo ordemInfo){
 
         String result = "";
 
@@ -61,7 +61,7 @@ public class   LivroDeOfertas {
 
 
 
-    public int verficarOrdens() {
+    public synchronized int verficarOrdens() {
         int count = 0;
         for (OrdemConcrets ordemCompra : ordens) {
             for (OrdemConcrets ordemVenda : ordens) {

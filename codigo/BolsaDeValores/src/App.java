@@ -74,21 +74,21 @@ public class App {
         Runnable brokerUm = () -> {
             try {
                 while (true) {
-                    int quantidade = gerarQuantidadeRandomica(30, 100);
-                    double preco = gerarValorRandomico(30.0, 100.0);                
-                    // Escolhe aleatoriamente entre COMPRA e VENDA
+                        int quantidade = gerarQuantidadeRandomica(30, 100);
+                        double preco = gerarValorRandomico(30.0, 100.0);                
+                        // Escolhe aleatoriamente entre COMPRA e VENDA
 
-                     OrderType tipoOrdem = OrderType.VENDA;              
-                    // Escolhe aleatoriamente uma sigla (por exemplo, AAPL)
+                         OrderType tipoOrdem = OrderType.VENDA;              
+                        // Escolhe aleatoriamente uma sigla (por exemplo, AAPL)
 
-                     String[] siglas = {"B3SA3", "ITSA4", "VALE3", "BBDC3", "PETR4", "MGLU3", "BBAS3", "SANB11", "ABEV3", "NTCO3", "ITUB4", "JBSS3", "WEGE3", "TIMS3", "ELET3", "COGN3", "EMBR3", "RADL3", "MRFG3", "FLRY3"};
-                     String sigla = siglas[new Random().nextInt(siglas.length)];                
-                    // Formata a ordem
-                     String ordem = String.format("%s;%s;%d;%.2f;BKR", tipoOrdem, sigla, quantidade, preco);  
+                         String[] siglas = {"B3SA3", "ITSA4", "VALE3", "BBDC3", "PETR4", "MGLU3", "BBAS3", "SANB11", "ABEV3", "NTCO3", "ITUB4", "JBSS3", "WEGE3", "TIMS3", "ELET3", "COGN3", "EMBR3", "RADL3", "MRFG3", "FLRY3"};
+                         String sigla = siglas[new Random().nextInt(siglas.length)];                
+                        // Formata a ordem
+                         String ordem = String.format("%s;%s;%d;%.2f;BKR", tipoOrdem, sigla, quantidade, preco);  
 
-                    // Adiciona a ordem à bolsa
-                    broker1.enviarOrdem(ordem);
-                    Thread.sleep(1000);
+                        // Adiciona a ordem à bolsa
+                        broker1.enviarOrdem(ordem);
+                        Thread.sleep(1000);
                  }
                 
                     
@@ -104,23 +104,24 @@ public class App {
             try {
         
                 while (true) {
-                    int quantidade = gerarQuantidadeRandomica(30, 100);
-                    double preco = gerarValorRandomico(30.0, 100.0);                
-                    // Escolhe aleatoriamente entre COMPRA e VENDA
+                        int quantidade = gerarQuantidadeRandomica(30, 100);
+                        double preco = gerarValorRandomico(30.0, 100.0);                
+                        // Escolhe aleatoriamente entre COMPRA e VENDA
 
-                     OrderType tipoOrdem = OrderType.COMPRA;              
-                    // Escolhe aleatoriamente uma sigla (por exemplo, AAPL)
+                         OrderType tipoOrdem = OrderType.COMPRA;              
+                        // Escolhe aleatoriamente uma sigla (por exemplo, AAPL)
 
-                     String[] siglas = {"B3SA3", "ITSA4", "VALE3", "BBDC3", "PETR4", "MGLU3", "BBAS3", "SANB11", "ABEV3", "NTCO3", "ITUB4", "JBSS3", "WEGE3", "TIMS3", "ELET3", "COGN3", "EMBR3", "RADL3", "MRFG3", "FLRY3"};
-                     String sigla = siglas[new Random().nextInt(siglas.length)];                
-                    // Formata a ordem
-                     String ordem = String.format("%s;%s;%d;%.2f;BKR", tipoOrdem, sigla, quantidade, preco);  
+                         String[] siglas = {"B3SA3", "ITSA4", "VALE3", "BBDC3", "PETR4", "MGLU3", "BBAS3", "SANB11", "ABEV3", "NTCO3", "ITUB4", "JBSS3", "WEGE3", "TIMS3", "ELET3", "COGN3", "EMBR3", "RADL3", "MRFG3", "FLRY3"};
+                         String sigla = siglas[new Random().nextInt(siglas.length)];                
+                        // Formata a ordem
+                         String ordem = String.format("%s;%s;%d;%.2f;BKR", tipoOrdem, sigla, quantidade, preco);  
 
-                    // Adiciona a ordem à bolsa
-                    broker2.enviarOrdem(ordem);
-                    Thread.sleep(1000);
+                        // Adiciona a ordem à bolsa
+                        broker2.enviarOrdem(ordem);
+                        Thread.sleep(1000);
+                    }
 
-                 }
+                 
             }catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -130,6 +131,8 @@ public class App {
 
         ThreadBrokerUm.start();
         ThreadBrokerDois.start();
+
+        ThreadBrokerUm.join();
         
 
     }
