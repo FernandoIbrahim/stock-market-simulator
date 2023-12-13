@@ -30,6 +30,7 @@ public class   LivroDeOfertas {
 
     public void addOrdem(OrdemConcrets ordem) {
         ordens.add(ordem);
+        System.out.println(ordem.getNotificacao());
         notifyAllObservers(ordem);
     }
 
@@ -42,7 +43,7 @@ public class   LivroDeOfertas {
         int diaOrdemInfo = ordemInfo.getDateTime().getDayOfMonth();
         int mesOrdemInfo = ordemInfo.getDateTime().getMonthValue();
         int anoOrdemInfo= ordemInfo.getDateTime().getYear();
-
+        if(ordens != null){
         return ordens.stream()
             .filter(ordem ->
                     ordem.getData().getHour() == horarioOrdemInfo &&
@@ -51,6 +52,8 @@ public class   LivroDeOfertas {
                     ordem.getData().getYear() == anoOrdemInfo)
             .map(Ordem::toString)
             .collect(Collectors.joining("\n"));
+        }
+        return null;
     }
 
     
