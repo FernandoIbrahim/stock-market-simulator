@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import BolsaDeValores.src.classes.ordens.Ordem;
-import BolsaDeValores.src.classes.ordens.OrderType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -78,5 +76,7 @@ public class TesteBolsaDeValores {
         System.out.println(result);
         assertNotNull(result);
     }
+
+    
     
 }
