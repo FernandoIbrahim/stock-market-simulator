@@ -27,5 +27,9 @@ public class OrdemInfo implements Ordem  {
     public Acao getAcao() {
         return this.acao;
     }
+    
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
 
 }

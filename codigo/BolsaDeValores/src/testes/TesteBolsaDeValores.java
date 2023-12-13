@@ -9,9 +9,10 @@ import BolsaDeValores.src.classes.ordens.Ordem;
 import BolsaDeValores.src.classes.ordens.OrderType;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import classes.*;
-import classes.ordens.*;;
+import classes.ordens.*;
 
 public class TesteBolsaDeValores {
 
@@ -40,7 +41,7 @@ public class TesteBolsaDeValores {
         bolsa.addAcao(acao4);
         bolsa.addAcao(acao5);
         bolsa.addAcao(acao6);
-        broker = new Broker(bolsa);
+        broker = new Broker(bolsa.getInstance());
         bolsa.addOperacaoCompraVenda("COMPRA;AAPL;100;150.50;BKR", broker);
         bolsa.addOperacaoCompraVenda("VENDA;GOOGL;50;2500.75;BKR", broker);
         bolsa.addOperacaoCompraVenda("COMPRA;MSFT;75;300.25;BKR", broker);
@@ -68,19 +69,14 @@ public class TesteBolsaDeValores {
     
 
     @Test
-    void sendOperacaoInfo_DeveRetornarListaDeOrdensNoHorarioEspecifico() {
-        // Arrange
-        BolsaDeValores bolsa = BolsaDeValores.getInstance();
-        Acao acao = new Acao("PETR4", "Petrobras", "Descrição");
-        Broker broker = new Broker(bolsa);
-        bolsa.assinar("PETR4", broker);
-
-        // Act
-        LocalDateTime localDateTime = LocalDateTime.now();
-        List<Ordem> ordens = bolsa.sendOperacaoInfo(OrderType.INFO, acao, localDateTime, broker);
-
-        // Assert
-        assertNotNull(ordens);
+    void sendOperacaoInfoDeveRetornarListaDeOrdensNoHorarioEspecifico() {
+        bolsa.addOperacaoCompraVenda("COMPRA;PETR4;100;26.46;BKR", broker);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH");
+        String nowString = now.format(dateFormatter);
+        String result = broker.pesquisarOrdemInfo("INFO;PETR4;"+nowString);
+        System.out.println(result);
+        assertNotNull(result);
     }
     
 }

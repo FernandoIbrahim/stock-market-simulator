@@ -14,7 +14,7 @@ public class BolsaDeValores {
 
     OrdemCompraFactory ordemCompraFactory;
     OrdemVendaFactory ordemVendaFactory;
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH");
 
 
     private static BolsaDeValores bolsaDeValores;
@@ -105,13 +105,21 @@ public class BolsaDeValores {
         livro.addOrdem(ordem);
     }
 
+    public String pesquisarOrdemInfo(String operacao, Broker broker){
+        String[] operacaoSlipt = operacao.split(";");
+        Acao acao2 = possuiAcao(operacaoSlipt[1]);
+        LocalDateTime data = LocalDateTime.parse(operacaoSlipt[2], dateFormatter);
+        return sendOperacaoInfo(acao2, data, broker);
+        
+    }
+
     /* Faz a construção das Operacao info via métodos factory, passando seus atributos por parâmetro.
         após isso enviar essa OperacaoInfo para pesquisa das ordens no determinado horario;
     */
-    public List<Ordem> sendOperacaoInfo(OrderType tipo, Acao acao, LocalDateTime localDateTime, Broker broker ){
+    public String sendOperacaoInfo( Acao acao, LocalDateTime localDateTime, Broker broker ){
         OrdemInfo ordem = new OrdemInfo(acao, localDateTime, broker);
         LivroDeOfertas livro = possuiLivroDeOfertas(acao.getSigla());
-        return livro.pesquisarOperacaoInfo(OrdemInfo ordem);
+        return livro.pesquisarOperacaoInfo(ordem);
     }
 
 

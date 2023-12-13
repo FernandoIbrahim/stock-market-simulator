@@ -15,6 +15,7 @@ public class Broker implements AcaoObserver{
     private static int countId = 0;
 
     public Broker(BolsaDeValores bolsa){
+        this.bolsa = bolsa;
         trasacoes = new ArrayList<>();
         notificacoes = new ArrayList<>();
         id = countId++;
@@ -30,6 +31,11 @@ public class Broker implements AcaoObserver{
 
     public void assinar(String sigla){
         bolsa.assinar(sigla, this);
+    }
+
+
+    public String pesquisarOrdemInfo(String sigla){
+        return bolsa.pesquisarOrdemInfo(sigla, this);
     }
 
 

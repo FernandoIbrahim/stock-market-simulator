@@ -8,10 +8,11 @@ import java.util.Observer;
 import classes.ordens.Ordem;
 import classes.ordens.OrdemCompra;
 import classes.ordens.OrdemConcrets;
+import classes.ordens.OrdemInfo;
 import classes.ordens.OrdemVenda;
 import classes.ordens.OrderType;
 
-public class LivroDeOfertas {
+public class    LivroDeOfertas {
 
     private List<OrdemConcrets> ordens;
     private List<Transacao> transacoes;
@@ -31,20 +32,47 @@ public class LivroDeOfertas {
 
     }
 
+    public String pesquisarOperacaoInfo(OrdemInfo ordemInfo){
+
+        String result = "";
+
+        List<Ordem> ordemsResuList = new ArrayList<>();
+        int horarioOrdemInfo = ordemInfo.getDateTime().getHour();
+        int diaOrdemInfo = ordemInfo.getDateTime().getDayOfMonth();
+        int mesOrdemInfo = ordemInfo.getDateTime().getMonthValue();
+        int AnoOrdemInfo= ordemInfo.getDateTime().getYear();
+
+        for(OrdemConcrets ordem: ordens){
+            int horarioOrdem = ordem.getData().getHour();
+            int diaOrdem = ordem.getData().getDayOfMonth();
+            int mesOrdem = ordem.getData().getMonthValue();
+            int AnoOrdem = ordem.getData().getYear();
+            if(diaOrdemInfo == diaOrdem && mesOrdemInfo == mesOrdem && AnoOrdemInfo == AnoOrdem && horarioOrdem == horarioOrdemInfo)
+                ordemsResuList.add(ordem);
+        }
+
+        for (Ordem ordem : ordemsResuList) {
+            result += ordem.toString() + "\n";
+        }
+
+        return result;
+
+    }
 
 
 
-    private void verficarOrdens() {
+    public int verficarOrdens() {
         int count = 0;
         for (OrdemConcrets ordemCompra : ordens) {
             for (OrdemConcrets ordemVenda : ordens) {
-                if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA && ordemVenda.getType() == OrderType.VENDA) {
+                if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA && ordemVenda.getType() == OrderType.VENDA && ordemVenda.getAtivo() == true && ordemCompra.getAtivo() == true) {
                     if(TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this)) count ++;
                 }
 
             }
         }
-        System.out.println(count + "transacoes foram criadas");   
+        System.out.println(count + "transacoes foram criadas");  
+        return count; 
     }
 
     public void notifyAllObservers(Ordem ordem) {

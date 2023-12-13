@@ -1,5 +1,8 @@
 package classes.ordens;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import classes.Acao;
 import classes.Broker;
 
@@ -9,13 +12,14 @@ public abstract class OrdemConcrets implements Ordem{
     private Broker broker;
     private boolean ativo;
     private double valor ;
-    
+    private LocalDateTime data;
 
      public OrdemConcrets(Acao acao, int quantidade, double valor,Broker broker){
         this.acao = acao;
         this.quantidade = quantidade;
         this.broker = broker;
         this.ativo = true;
+        this.data = LocalDateTime.now();
      }
      
     
@@ -31,10 +35,7 @@ public abstract class OrdemConcrets implements Ordem{
      public Acao getAcao() {
          return acao;
      }
-     public void setAcao(Acao acao) {
-         this.acao = acao;
-     }
-    
+
      public void alterarStatus() {
         this.ativo = !this.ativo ;
      }
@@ -50,9 +51,15 @@ public abstract class OrdemConcrets implements Ordem{
          return valor;
      }
 
-        public void setValor(double valor) {
-            this.valor = valor;
-        }
+     public LocalDateTime getData() {
+         return data;
+     }
+
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return String.format("Ordem \n{acao=%s,\nquantidade=%d,\nbroker=%s,\nativo=%b,\nvalor=%.2f,\ndata=%s}",
+                acao.getSigla(), quantidade, broker.getClass().getSimpleName(), ativo, valor, data.format(formatter));
+    }
 
 
 }
