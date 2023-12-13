@@ -78,4 +78,7 @@ public class LivroDeOfertas {
         return acaoObservers.contains(observer);
     }
 
+    public List<OrdemConcrets> getOrdens() {
+        return ordens;
+    }
 }

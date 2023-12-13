@@ -52,8 +52,7 @@ public class BolsaDeValores {
         return livroDeOfertas;
     }
 
-    //! solicitar implementação getAcao()
-    private Acao possuiAcao(String sigla){
+    public Acao possuiAcao(String sigla) {
         return livrosDeOfertas.get(sigla).getAcao();
     }
 
@@ -112,7 +111,8 @@ public class BolsaDeValores {
     public List<Ordem> sendOperacaoInfo(OrderType tipo, Acao acao, LocalDateTime localDateTime, Broker broker ){
         OrdemInfo ordem = new OrdemInfo(acao, localDateTime, broker);
         LivroDeOfertas livro = possuiLivroDeOfertas(acao.getSigla());
-        return livro.pesquisarOperacaoInfo(ordem);
+        return livro.pesquisarOperacaoInfo(OrdemInfo ordem);
     }
+
 
 }
