@@ -47,7 +47,10 @@ public class Broker implements AcaoObserver{
     }
 
     
-    
+    @Override
+    public String toString() {
+        return " "+this.id+" ";
+    }
 
 
 }

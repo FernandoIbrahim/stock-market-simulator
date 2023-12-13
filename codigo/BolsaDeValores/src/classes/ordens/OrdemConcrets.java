@@ -20,6 +20,7 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
         this.broker = broker;
         this.ativo = true;
         this.data = LocalDateTime.now();
+        this.valor = valor;
      }
      
     
@@ -65,6 +66,7 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
         return -1;
     }
 
+    
     public abstract String getNotificacao();
 
 }

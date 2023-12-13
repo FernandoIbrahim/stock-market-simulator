@@ -15,4 +15,9 @@ public class Acao {
       this.desc = desc;
       this.nome = nome;
    }
+   @Override
+   public String toString() {
+       return this.id;
+   }
+
 }

@@ -31,21 +31,22 @@ public class TesteLivroDeOfetas {
     @BeforeEach
     public void setUp() {
         bolsa = BolsaDeValores.getInstance();
-        acao1 = new Acao("AAPL", "Apple Inc.", "Empresa de tecnologia");
-        acao2 = new Acao("GOOGL", "Alphabet Inc.", "Empresa-mãe do Google");
-        acao3 = new Acao("MSFT", "Microsoft Corporation", "Empresa de tecnologia");
-        acao4 = new Acao("AMZN", "Amazon.com Inc.", "Empresa de comércio eletrônico");
-        acao5 = new Acao("TSLA", "Tesla Inc.", "Fabricante de veículos elétricos");
-        acao6 = new Acao("PETR4", "Petra", "Empresa fabricante de carveja");
+        Acao acao1 = new Acao("AAPL", "Apple Inc.", "Empresa de tecnologia");
+        Acao acao2 = new Acao("GOOGL", "Alphabet Inc.", "Empresa-mãe do Google");
+        Acao acao3 = new Acao("MSFT", "Microsoft Corporation", "Empresa de tecnologia");
+        Acao acao4 = new Acao("AMZN", "Amazon.com Inc.", "Empresa de comércio eletrônico");
+        Acao acao5 = new Acao("TSLA", "Tesla Inc.", "Fabricante de veículos elétricos");
+        Acao acao6 = new Acao("PETR4", "Petra", "Empresa fabricante de carveja");
         bolsa.addAcao(acao1);
         bolsa.addAcao(acao2);
         bolsa.addAcao(acao3);
         bolsa.addAcao(acao4);
         bolsa.addAcao(acao5);
         bolsa.addAcao(acao6);
-        broker = new Broker(bolsa.getInstance());
-        broker1 = new Broker(bolsa.getInstance());
-        broker2 = new Broker(bolsa.getInstance());
+        Broker broker = new Broker(bolsa.getInstance());
+        Broker broker1 = new Broker(bolsa.getInstance());
+        Broker broker2 = new Broker(bolsa.getInstance());
+        Broker broker3 = new Broker(bolsa.getInstance());
         bolsa.addOperacaoCompraVenda("COMPRA;AAPL;100;1000.50;BKR", broker2);
         bolsa.addOperacaoCompraVenda("VENDA;AAPL;15;700.75;BKR", broker1);
         bolsa.addOperacaoCompraVenda("VENDA;AAPL;15;800.25;BKR", broker);
