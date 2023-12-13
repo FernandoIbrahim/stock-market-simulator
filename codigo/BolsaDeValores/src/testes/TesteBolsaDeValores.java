@@ -50,7 +50,7 @@ public class TesteBolsaDeValores {
     @Test
     void assinarBrokerParaAcao_DeveAdicionarBrokerComoObserver() {
         bolsa.addAcao(acao1);
-        bolsa.assinar("AAPL", broker);  // Use the correct ticker symbol
+        bolsa.assinarAcao("AAPL", broker);  // Use the correct ticker symbol
         LivroDeOfertas livro = bolsa.possuiLivroDeOfertas("AAPL");
 
         // Assert

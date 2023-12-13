@@ -23,5 +23,9 @@ public class Transacao {
         this.acao = acao;
     }
 
+    public String getNotificacao(){
+        return "Transacao Criada: \n" + ordemCompra.toString() + "\n---\n" + ordemVenda.toString() + "\n---\n Quantidade: " + quantidade + "\nAcao: " + acao + "\nValor: " + valor; 
+    }
+
 
 }

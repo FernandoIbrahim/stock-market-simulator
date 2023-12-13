@@ -62,7 +62,9 @@ public class   LivroDeOfertas {
         for (OrdemConcrets ordemCompra : ordens) {
             for (OrdemConcrets ordemVenda : ordens) {
                 if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA && ordemVenda.getType() == OrderType.VENDA && ordemVenda.getAtivo() == true && ordemCompra.getAtivo() == true) {
-                    if(TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this)) count ++;
+                    Transacao transacao = TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this);
+                    if(transacao != null) count ++;
+                        System.out.println(transacao.toString());
                 }
 
             }
@@ -71,9 +73,9 @@ public class   LivroDeOfertas {
         return count; 
     }
 
-    public void notifyAllObservers(Ordem ordem) {
+    public void notifyAllObservers(OrdemConcrets ordem) {
         for (AcaoObserver acaoObserver : acaoObservers) {
-            acaoObserver.update(ordem.toString());
+            acaoObserver.update(ordem.getNotificacao());
         }
 
     }

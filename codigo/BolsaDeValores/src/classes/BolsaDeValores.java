@@ -51,9 +51,6 @@ public class BolsaDeValores {
 
     public LivroDeOfertas possuiLivroDeOfertas(String sigla) {
         LivroDeOfertas livroDeOfertas =  livrosDeOfertas.get(sigla);
-        if(livroDeOfertas == null){
-            //throw new Exception()
-        }
         return livroDeOfertas;
     }
 

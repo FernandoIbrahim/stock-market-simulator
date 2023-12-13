@@ -55,11 +55,6 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
          return data;
      }
 
-    public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return String.format("Ordem \n{acao=%s,\nquantidade=%d,\nbroker=%s,\nativo=%b,\nvalor=%.2f,\ndata=%s}",
-            acao.getSigla(), quantidade, broker.getClass().getSimpleName(), ativo, valor, data.format(formatter));
-    }
 
     public int compareTo(OrdemConcrets ordemConcrets){
         if(this.getQuantidade() > ordemConcrets.getQuantidade())
@@ -69,5 +64,7 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
 
         return -1;
     }
+
+    public abstract String getNotificacao();
 
 }

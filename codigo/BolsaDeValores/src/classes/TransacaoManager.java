@@ -9,7 +9,7 @@ import classes.ordens.*;;
 
 public class TransacaoManager {
 
-    public static boolean criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LivroDeOfertas livro) {
+    public static Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LivroDeOfertas livro) {
         if (podeCriarTransacao(ordemCompra, ordemVenda)) {
             int quantidadeTransacao = Math.min(ordemCompra.getQuantidade(), ordemVenda.getQuantidade());
             double valorTransacao = ordemVenda.getValor();
@@ -17,12 +17,13 @@ public class TransacaoManager {
             LocalDateTime dataHora = LocalDateTime.now();
             Acao acao = ordemCompra.getAcao();
 
-            livro.addTransacao(criarTransacao(ordemCompra,ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao));
+            Transacao transacao =  criarTransacao(ordemCompra,ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao);
+            livro.addTransacao(transacao);
             atualizarOrdens(ordemCompra, ordemVenda, quantidadeTransacao);
 
-            return true;
+            return transacao;
         }
-        return false;
+        return null;
     }
 
     private static boolean podeCriarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda) {
