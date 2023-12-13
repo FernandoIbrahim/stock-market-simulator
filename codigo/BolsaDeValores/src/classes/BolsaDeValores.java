@@ -27,9 +27,14 @@ public class BolsaDeValores {
         livrosDeOfertas  = new HashMap<>();
     }
 
-    public void assinar(String sigla, Broker broker){
+    public void assinarAcao(String sigla, Broker broker){
         LivroDeOfertas livro = possuiLivroDeOfertas(sigla);
         livro.addObserver(broker);
+    }
+
+    public void removeAssinatura(String sigla, Broker broker){
+        LivroDeOfertas livro = possuiLivroDeOfertas(sigla);
+        livro.removeObserver(broker);
     }
 
     public void addAcao(Acao acao ){

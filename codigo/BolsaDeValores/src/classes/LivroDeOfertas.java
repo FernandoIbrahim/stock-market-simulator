@@ -30,6 +30,7 @@ public class   LivroDeOfertas {
 
     public void addOrdem(OrdemConcrets ordem) {
         ordens.add(ordem);
+        notifyAllObservers(ordem);
     }
 
     public String pesquisarOperacaoInfo(OrdemInfo ordemInfo){

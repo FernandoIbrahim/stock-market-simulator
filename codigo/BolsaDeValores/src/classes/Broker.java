@@ -29,8 +29,8 @@ public class Broker implements AcaoObserver{
         bolsa.pesquisarOrdemInfo(ordem, this);
     }
 
-    public void assinar(String sigla){
-        bolsa.assinar(sigla, this);
+    public void assinarAcao(String sigla){
+        bolsa.assinarAcao(sigla, this);
     }
 
 
