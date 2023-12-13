@@ -1,3 +1,9 @@
+
+/**
+ * Classe Ordemvenda que implementa a interface OperacaoFactory
+ * Essa classe é responsável por criar um objeto da classe Ordemvenda.
+ * Design Pattern: Factory Method
+ */
 package classes.ordens;
 
 import classes.Acao;

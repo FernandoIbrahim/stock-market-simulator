@@ -1,5 +1,8 @@
 package classes.ordens;
-
+/**
+ * Classe abstrata OrdemConcrets que implementa a interface Ordem.
+ * 
+ */
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,6 +17,13 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
     private double valor ;
     private LocalDateTime data;
 
+    /***
+     * Construtor da classe OrdemConcrets
+     * @param acao Recebe a ação que será feita a ordem
+     * @param quantidade Recebe a quantidade de ações que será feita a ordem
+     * @param valor Recebe o valor da ordem
+     * @param broker Recebe o broker que será feita a ordem
+     */
      public OrdemConcrets(Acao acao, int quantidade, double valor,Broker broker){
         this.acao = acao;
         this.quantidade = quantidade;
@@ -36,14 +46,19 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
      public Acao getAcao() {
          return acao;
      }
-
+     /**
+      * Altera o status da ordem
+      */
      public void alterarStatus() {
         this.ativo = !this.ativo ;
      }
      public void setBroker(Broker broker) {
          this.broker = broker;
      }
-    
+     /**
+      * Atualiza a quantidade de ações da ordem
+      * @param quantidade Recebe a quantidade de ações que será feita a ordem
+      */
      public void atualizar(int quantidade) {
          this.quantidade = quantidade;
      }
@@ -56,7 +71,10 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
          return data;
      }
 
-
+     /**
+      * Compara a quantidade de ações de duas ordens
+     * @param ordemConcrets Recebe a ordem que será comparada
+      */
     public int compareTo(OrdemConcrets ordemConcrets){
         if(this.getQuantidade() > ordemConcrets.getQuantidade())
             return 1;
@@ -66,7 +84,10 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
         return -1;
     }
 
-    
+    /**
+     * 
+     * @return Retorna a notificação da ordem (ToString)
+     */
     public abstract String getNotificacao();
 
 }
