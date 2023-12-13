@@ -32,6 +32,11 @@ public class BolsaDeValores {
         livro.addObserver(broker);
     }
 
+    public void addAcao(Acao acao ){
+        LivroDeOfertas livro = new LivroDeOfertas(acao);
+        livrosDeOfertas.put(acao.getSigla(), livro);
+    }
+
     public static BolsaDeValores getInstance() {
         if (bolsaDeValores == null) {
             bolsaDeValores = new BolsaDeValores();

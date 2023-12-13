@@ -3,6 +3,7 @@ package classes;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 import classes.ordens.Ordem;
 import classes.ordens.OrdemCompra;
@@ -71,6 +72,10 @@ public class LivroDeOfertas {
 
     public Acao getAcao() {
         return acao;
+    }
+
+    public boolean temObserver(AcaoObserver observer){
+        return acaoObservers.contains(observer);
     }
 
 }
