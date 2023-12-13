@@ -2,13 +2,14 @@ package classes;
 
 import java.time.LocalDateTime;
 
-import classes.ordens.OrdemCompra;
-import classes.ordens.OrdemVenda;
+
+import classes.*;
+import classes.ordens.*;;
 
 
 public class TransacaoManager {
 
-    public static boolean criarTransacao(OrdemCompra ordemCompra, OrdemVenda ordemVenda) {
+    public static boolean criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LivroDeOfertas livro) {
         if (podeCriarTransacao(ordemCompra, ordemVenda)) {
             int quantidadeTransacao = Math.min(ordemCompra.getQuantidade(), ordemVenda.getQuantidade());
             double valorTransacao = ordemVenda.getValor();
@@ -16,7 +17,7 @@ public class TransacaoManager {
             LocalDateTime dataHora = LocalDateTime.now();
             Acao acao = ordemCompra.getAcao();
 
-            criarTransacao(ordemCompra,ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao);
+            livro.addTransacao(criarTransacao(ordemCompra,ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao));
             atualizarOrdens(ordemCompra, ordemVenda, quantidadeTransacao);
 
             return true;
@@ -24,16 +25,16 @@ public class TransacaoManager {
         return false;
     }
 
-    private static boolean podeCriarTransacao(OrdemCompra ordemCompra, OrdemVenda ordemVenda) {
+    private static boolean podeCriarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda) {
         return ordemCompra.getValor() >= ordemVenda.getValor();
     }
 
-    private static void criarTransacao(OrdemCompra ordemCompra, OrdemVenda ordemVenda, LocalDateTime dataHora, int quantidade, double valor, Acao acao) {
-        Transacao transacao = new Transacao(ordemCompra, ordemVenda, dataHora, quantidade, valor, acao);
+    private static Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LocalDateTime dataHora, int quantidade, double valor, Acao acao) {
+        return new Transacao(ordemCompra, ordemVenda, dataHora, quantidade, valor, acao);
         // Add logic to handle the created transaction as needed
     }
 
-    private static void atualizarOrdens(OrdemCompra ordemCompra, OrdemVenda ordemVenda, int quantidadeTransacao) {
+    private static void atualizarOrdens(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, int quantidadeTransacao) {
         if (ordemCompra.getQuantidade() > quantidadeTransacao) {
             ordemCompra.atualizar(ordemCompra.getQuantidade() - quantidadeTransacao);
         } else {
@@ -46,4 +47,5 @@ public class TransacaoManager {
             ordemVenda.alterarStatus();
         }
     }
+    
 }

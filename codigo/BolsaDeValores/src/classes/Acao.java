@@ -6,4 +6,8 @@ public class Acao {
    private String nome;
    private String desc;
 
+public String getSigla() {
+    return id;
+}
+
 }

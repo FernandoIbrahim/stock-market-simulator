@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>64</y><w>312</w><h>200</h></coordinates><panel_attributes>Broker
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>64</y><w>312</w><h>224</h></coordinates><panel_attributes>Broker
 --
 
 - id
@@ -16,22 +16,27 @@
 
 + assinar(sigla: String): void
 
-+ upData(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>40</y><w>368</w><h>216</h></coordinates><panel_attributes>BolsaDeValores
++ updata(notificacao: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>0</y><w>368</w><h>256</h></coordinates><panel_attributes>BolsaDeValores
 --
 
 - livroDeOfertas: MAP &lt;Acao, LivroDeOferta&gt;
 
 - acoes: List Acao
 --
+
+- BolsaDeVAlores( );
+
 + assinar(sigla: String, Broker broker): void
 
 - captureOrdem(sigla: String, quantidade: int, tipo: String, Broker broker): void
 
-- possuiAcao(sigla:string): LivroDeOfertas
++ possuiLivroDeOfertas(sigla: String): LivroDeOfertas
 
 + addOperacao(operacao String, Broker broker);
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>848</x><y>0</y><w>176</w><h>152</h></coordinates><panel_attributes>Acao
++ possuiAcao(sigla: String): Acao
+
++ getInstance(): BolsaDeValores</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>848</x><y>0</y><w>176</w><h>152</h></coordinates><panel_attributes>Acao
 --
 
 - id: String
@@ -131,7 +136,7 @@ m1=1</panel_attributes><additional_attributes>100;10;10;10</additional_attribute
 + addObserver(Observer observer): void
 
 - removeObeserver(AcaoObserver acaoObserver): void
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>256</y><w>24</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>648</y><w>144</w><h>72</h></coordinates><panel_attributes>OrdemInfoFactory
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>280</y><w>24</w><h>64</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>648</y><w>144</w><h>72</h></coordinates><panel_attributes>OrdemInfoFactory
 --
 
 --

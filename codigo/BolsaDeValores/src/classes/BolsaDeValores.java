@@ -54,32 +54,38 @@ public class BolsaDeValores {
 
     //! Finalizar ao Implementar os Factories para realizar a criação da Ordem
 
-    public void addOperacao(String operacao, Broker broker){
+    public void addOperacaoCompraVenda(String operacao, Broker broker){
 
         String[] operacaoSlipt = operacao.split(";");
         String tipo = operacaoSlipt[0].toUpperCase(); 
+        OrderType tipoOrder = OrderType.valueOf(tipo);
+        Acao acao2 = possuiAcao(operacaoSlipt[1]); 
+        int quantidade2 = Integer.parseInt(operacaoSlipt[2]);
+        double preco2 = Double.parseDouble(operacaoSlipt[3]);
 
-        switch (tipo) {
-            case "COMPRA":
-                Acao acao = possuiAcao(operacaoSlipt[1]); 
-                int quantidade = Integer.parseInt(operacaoSlipt[2]);
-                double preco = Double.parseDouble(operacaoSlipt[3]);
-                captureOrdem(tipo, acao, quantidade, preco, broker, ordemCompraFactory);
-                break;
-            case "VENDA":
+        OperacaoFactory  operacaoFactory;
 
-                Acao acao2 = possuiAcao(operacaoSlipt[1]); 
-                int quantidade2 = Integer.parseInt(operacaoSlipt[2]);
-                double preco2 = Double.parseDouble(operacaoSlipt[3]);
-                captureOrdem(tipo, acao2, quantidade2, preco2, broker,  ordemVendaFactory);
+        switch (tipoOrder) {
+            case VENDA:
+                captureOrdem(OrderType.valueOf(tipo), acao2, quantidade2, preco2, broker,  ordemVendaFactory);
                 break;
 
-            case "INFO":
-                Acao acao3 = possuiAcao(operacaoSlipt[1]); 
-                LocalDateTime localDateTime = LocalDateTime.parse(operacaoSlipt[2], formatter);
-                sendOperacaoInfo(tipo, acao3, localDateTime, ordemInfoFactory, broker);
+            case COMPRA:
+                captureOrdem(OrderType.valueOf(tipo), acao2, quantidade2, preco2, broker,  ordemCompraFactory);
+                break;
+        
+            default:
                 break;
         }
+
+        /* 
+        "INFO":
+        Acao acao3 = possuiAcao(operacaoSlipt[1]); 
+        LocalDateTime localDateTime = LocalDateTime.parse(operacaoSlipt[2], formatter);
+        sendOperacaoInfo(tipo, acao3, localDateTime, ordemInfoFactory, broker);
+        break;
+        }
+        */
 
     }
 
@@ -87,9 +93,9 @@ public class BolsaDeValores {
     /* Faz a construção das Ordem "COMPRA/VENDA" via métodos factory, passando seus atributos por parâmetro.
         após isso enviar essa ordem ao livroDeOfertas da determinada acao;
     */
-    private void captureOrdem(String tipo, Acao acao, int quantidade,double preco, Broker broker, OperacaoFactory operacaoFactory ){
+    private void captureOrdem(OrderType tipo, Acao acao, int quantidade,double preco, Broker broker, OperacaoFactory operacaoFactory ){
 
-        OrdemConcrets ordem = operacaoFactory.criarOrdem(tipo, acao, quantidade, preco, broker);
+        OrdemConcrets ordem = operacaoFactory.criarOrdem( acao, quantidade, preco, broker); //! precisamos de um factory que abstraia de ConcreteOrdem;
         
         LivroDeOfertas livro = possuiLivroDeOfertas(acao.getSigla());
         livro.addOrdem(ordem);
@@ -98,13 +104,10 @@ public class BolsaDeValores {
     /* Faz a construção das Operacao info via métodos factory, passando seus atributos por parâmetro.
         após isso enviar essa OperacaoInfo para pesquisa das ordens no determinado horario;
     */
-    public List<Ordem> sendOperacaoInfo(String tipo, Acao acao, LocalDateTime localDateTime, Broker broker, OperacaoFactory operacaoFactory ){
-        
-        OrdemInfo ordem = operacaoFactory.criarOrdem(tipo, acao, localDateTime, broker);
-        
+    public List<Ordem> sendOperacaoInfo(OrderType tipo, Acao acao, LocalDateTime localDateTime, Broker broker ){
+        OrdemInfo ordem = new OrdemInfo(acao, localDateTime, broker);
         LivroDeOfertas livro = possuiLivroDeOfertas(acao.getSigla());
         return livro.pesquisarOperacaoInfo(ordem);
     }
-
 
 }

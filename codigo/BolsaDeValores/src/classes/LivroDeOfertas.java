@@ -37,39 +37,21 @@ public class LivroDeOfertas {
    
 
 
-    private void createTransacao(Ordem ordem, LocalDateTime datahora, int quantidade, double valor , Acao acao) {
-        Transacao transacao = new Transacao(ordem, datahora, quantidade, valor , acao);
-    }
 
-    private void verficarOrdens(List<? extends OrdemConcrets> ordencompra, List<? extends OrdemConcrets> ordensvenda) {
 
+    private void verficarOrdens( OrdemConcrets ordencompra, OrdemConcrets ordensvenda) {
+        
+        int count = 0;
         for (OrdemConcrets ordemCompra : ordencompra) {
             for (OrdemConcrets ordemVenda : ordensvenda) {
-                if (ordemCompra.getValor() >= ordemVenda.getValor()) {
-                    int quantidade = ordemCompra.getQuantidade() - ordemVenda.getQuantidade();
-                    if (quantidade > 0) {
-                        createTransacao(ordemCompra, LocalDateTime.now(), ordemVenda.getQuantidade(),
-                                ordemVenda.getValor(), acao);
-                        ordemCompra.atualizar(quantidade);
-                        ordensvenda.remove(ordemVenda);
-                    } else if (quantidade < 0) {
-                        createTransacao(ordemCompra, LocalDateTime.now(), ordemCompra.getQuantidade(),
-                                ordemVenda.getValor(), acao);
-                        ordemVenda.atualizar(quantidade);
-                        ordencompra.remove(ordemCompra);
-                    } else {
-                        createTransacao(ordemCompra, LocalDateTime.now(), ordemCompra.getQuantidade(),
-                                ordemVenda.getValor(), acao);
-                        ordencompra.remove(ordemCompra);
-                        ordensvenda.remove(ordemVenda);
-                    }
+                if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA && ordemVenda.getType() == OrderType.VENDA) {
+                    if(TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this)) count ++;
                 }
+
             }
         }
-        
+        System.out.println(count + "transacoes foram criadas");   
 
-        
-        
     }
 
     public void notifyAllObservers(Ordem ordem) {
@@ -87,11 +69,16 @@ public class LivroDeOfertas {
         acaoObservers.remove(acaoObserver);
     }
 
-    public Acao getAcao() {
-        return acao;
+    public void addTransacao(Transacao transacao) {
+        this.transacoes.add(transacao);
     }
+
     public void setAcao(Acao acao) {
         this.acao = acao;
+    }
+
+    public Acao getAcao() {
+        return acao;
     }
 
 }
