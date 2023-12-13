@@ -8,7 +8,7 @@ public class OrdemVendaFactory implements OperacaoFactory {
      
 
     @Override
-    public Ordem criarOrdem( Acao acao, int quantidade, double valor,Broker broker) {
+    public OrdemConcrets criarOrdem( Acao acao, int quantidade, double valor,Broker broker) {
         return new OrdemVenda(acao,quantidade,valor, broker);
     }
 

@@ -30,20 +30,13 @@ public class LivroDeOfertas {
 
     }
 
-    public void atualizarOrdem(Ordem ordem, int quantidade) {
-
- 
-   }
-   
 
 
 
-
-    private void verficarOrdens( OrdemConcrets ordencompra, OrdemConcrets ordensvenda) {
-        
+    private void verficarOrdens() {
         int count = 0;
-        for (OrdemConcrets ordemCompra : ordencompra) {
-            for (OrdemConcrets ordemVenda : ordensvenda) {
+        for (OrdemConcrets ordemCompra : ordens) {
+            for (OrdemConcrets ordemVenda : ordens) {
                 if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA && ordemVenda.getType() == OrderType.VENDA) {
                     if(TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this)) count ++;
                 }
@@ -51,7 +44,6 @@ public class LivroDeOfertas {
             }
         }
         System.out.println(count + "transacoes foram criadas");   
-
     }
 
     public void notifyAllObservers(Ordem ordem) {
