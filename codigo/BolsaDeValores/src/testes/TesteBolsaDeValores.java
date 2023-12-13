@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import classes.*;
 
-class BolsaDeValoresTest {
+public class TesteBolsaDeValores {
 
     BolsaDeValores bolsa;
     Acao acao1;
