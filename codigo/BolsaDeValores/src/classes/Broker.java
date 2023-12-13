@@ -25,9 +25,9 @@ public class Broker implements AcaoObserver{
         bolsa.addOperacaoCompraVenda(ordem, this);
     }
 
-    // public void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
-    //     bolsa.addOperacao(ordem, this);
-    // }
+    public void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
+        bolsa.pesquisarOrdemInfo(ordem, this);
+    }
 
     public void assinar(String sigla){
         bolsa.assinar(sigla, this);

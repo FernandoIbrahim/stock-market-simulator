@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
+import java.util.stream.Collectors;
 
 import classes.ordens.Ordem;
 import classes.ordens.OrdemCompra;
@@ -12,7 +13,7 @@ import classes.ordens.OrdemInfo;
 import classes.ordens.OrdemVenda;
 import classes.ordens.OrderType;
 
-public class    LivroDeOfertas {
+public class   LivroDeOfertas {
 
     private List<OrdemConcrets> ordens;
     private List<Transacao> transacoes;
@@ -35,28 +36,23 @@ public class    LivroDeOfertas {
 
         String result = "";
 
-        List<Ordem> ordemsResuList = new ArrayList<>();
+        List<OrdemConcrets> ordemsResuList = new ArrayList<>();
         int horarioOrdemInfo = ordemInfo.getDateTime().getHour();
         int diaOrdemInfo = ordemInfo.getDateTime().getDayOfMonth();
         int mesOrdemInfo = ordemInfo.getDateTime().getMonthValue();
-        int AnoOrdemInfo= ordemInfo.getDateTime().getYear();
+        int anoOrdemInfo= ordemInfo.getDateTime().getYear();
 
-        for(OrdemConcrets ordem: ordens){
-            int horarioOrdem = ordem.getData().getHour();
-            int diaOrdem = ordem.getData().getDayOfMonth();
-            int mesOrdem = ordem.getData().getMonthValue();
-            int AnoOrdem = ordem.getData().getYear();
-            if(diaOrdemInfo == diaOrdem && mesOrdemInfo == mesOrdem && AnoOrdemInfo == AnoOrdem && horarioOrdem == horarioOrdemInfo)
-                ordemsResuList.add(ordem);
-        }
-
-        for (Ordem ordem : ordemsResuList) {
-            result += ordem.toString() + "\n";
-        }
-
-        return result;
-
+        return ordens.stream()
+            .filter(ordem ->
+                    ordem.getData().getHour() == horarioOrdemInfo &&
+                    ordem.getData().getDayOfMonth() == diaOrdemInfo &&
+                    ordem.getData().getMonthValue() == mesOrdemInfo &&
+                    ordem.getData().getYear() == anoOrdemInfo)
+            .map(Ordem::toString)
+            .collect(Collectors.joining("\n"));
     }
+
+    
 
 
 
