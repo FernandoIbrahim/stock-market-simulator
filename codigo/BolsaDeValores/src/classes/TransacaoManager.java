@@ -11,7 +11,13 @@ public class TransacaoManager {
 
     public static Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LivroDeOfertas livro) {
         if (podeCriarTransacao(ordemCompra, ordemVenda)) {
-            int quantidadeTransacao = Math.min(ordemCompra.getQuantidade(), ordemVenda.getQuantidade());
+            int quantidadeTransacao;
+            
+            if(ordemCompra.getQuantidade() > ordemVenda.getQuantidade() )
+                quantidadeTransacao = ordemVenda.getQuantidade();
+            else
+                quantidadeTransacao = ordemCompra.getQuantidade();
+                
             double valorTransacao = ordemVenda.getValor();
 
             LocalDateTime dataHora = LocalDateTime.now();
@@ -37,13 +43,13 @@ public class TransacaoManager {
     private static void atualizarOrdens(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, int quantidadeTransacao) {
         int comparacao = ordemCompra.compareTo(ordemVenda);
 
-        if( comparacao> 0){
+        if( comparacao > 0){
             ordemCompra.atualizar(ordemCompra.getQuantidade() - quantidadeTransacao);
             ordemVenda.alterarStatus();
         }
         
         else if(comparacao < 0){
-            ordemVenda.atualizar(ordemCompra.getQuantidade() - quantidadeTransacao);
+            ordemVenda.atualizar(ordemVenda.getQuantidade() - quantidadeTransacao);
             ordemCompra.alterarStatus();
         }
         else{

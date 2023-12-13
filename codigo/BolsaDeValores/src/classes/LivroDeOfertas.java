@@ -32,6 +32,7 @@ public class   LivroDeOfertas {
         ordens.add(ordem);
         System.out.println(ordem.getNotificacao());
         notifyAllObservers(ordem);
+        verficarOrdens();
     }
 
     public String pesquisarOperacaoInfo(OrdemInfo ordemInfo){
@@ -66,13 +67,14 @@ public class   LivroDeOfertas {
             for (OrdemConcrets ordemVenda : ordens) {
                 if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA && ordemVenda.getType() == OrderType.VENDA && ordemVenda.getAtivo() == true && ordemCompra.getAtivo() == true) {
                     Transacao transacao = TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this);
-                    if(transacao != null) count ++;
-                        System.out.println(transacao.toString());
+                    if(transacao != null){
+                        System.out.println(transacao.getNotificacao());
+                        count++;
+                    }
                 }
 
             }
         }
-        System.out.println(count + "transacoes foram criadas");  
         return count; 
     }
 

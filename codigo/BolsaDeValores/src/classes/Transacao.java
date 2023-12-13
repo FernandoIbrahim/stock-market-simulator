@@ -24,7 +24,7 @@ public class Transacao {
     }
 
     public String getNotificacao(){
-        return "Transacao Criada: \n" + ordemCompra.toString() + "\n---\n" + ordemVenda.toString() + "\n---\n Quantidade: " + quantidade + "\nAcao: " + acao + "\nValor: " + valor; 
+        return "\n---------------------------------------------------------------\nTransacao Criada: \n" + ordemCompra.getNotificacao() + "\n---\n" + ordemVenda.getNotificacao() + "\n---\n Quantidade: " + quantidade + "\nAcao: " + acao.toString() + "\nValor: " + valor + "\n---------------------------------------------------------------\n"; 
     }
 
 
