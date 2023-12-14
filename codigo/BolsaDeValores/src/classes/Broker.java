@@ -25,12 +25,13 @@ public class Broker implements AcaoObserver{
     }
 
     public synchronized void enviarOrdem(String ordem){  // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
-            bolsa.addOperacaoCompraVenda(ordem, this);
+        bolsa.addOperacaoCompraVenda(ordem, this);
 
     }
 
     public synchronized void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
-        bolsa.pesquisarOrdemInfo(ordem, this);
+        notificacoes.add(bolsa.pesquisarOrdemInfo(ordem, this));
+        System.out.println("Segundo solicitado pelo broker de ID :"+ this.id+ "as ordens na hora solicitada foram" + bolsa.pesquisarOrdemInfo(ordem, this)+ "\n\n");
     }
 
     public void assinarAcao(String sigla){
@@ -56,5 +57,9 @@ public class Broker implements AcaoObserver{
         return " "+this.id+" ";
     }
 
+    @Override
+    public int getId() {
+        return this.id;
+    }
 
 }

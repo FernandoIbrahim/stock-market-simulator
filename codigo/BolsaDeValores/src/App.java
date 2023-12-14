@@ -1,4 +1,6 @@
 
+import static org.junit.jupiter.api.DynamicTest.stream;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -68,12 +70,22 @@ public class App {
 
 
 
-        
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        broker1.assinarAcao("B3SA3");
+        broker1.assinarAcao("VALE3");
 
+        broker2.assinarAcao("PETR4");
+        broker2.assinarAcao("NTCO3");
+        broker2.assinarAcao("BBDC3");
+
+        System.out.println("O broker de ID: 0 assinou a acao: B3SA3 e a VALE3");
+        System.out.println("O broker de ID: 1 assinou a acao: PETR4, NTCO3 e BBDC3\n\n");
+
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        
         Runnable brokerUm = () -> {
             try {
                 while (true) {
+                        Thread.sleep(2000);
                         int quantidade = gerarQuantidadeRandomica(30, 100);
                         double preco = gerarValorRandomico(30.0, 100.0);                
                         // Escolhe aleatoriamente entre COMPRA e VENDA
@@ -104,6 +116,7 @@ public class App {
             try {
         
                 while (true) {
+                        Thread.sleep(1000);
                         int quantidade = gerarQuantidadeRandomica(30, 100);
                         double preco = gerarValorRandomico(30.0, 100.0);                
                         // Escolhe aleatoriamente entre COMPRA e VENDA
@@ -118,7 +131,7 @@ public class App {
 
                         // Adiciona a ordem à bolsa
                         broker2.enviarOrdem(ordem);
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     }
 
                  

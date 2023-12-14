@@ -18,7 +18,7 @@ public class TransacaoManager {
             LocalDateTime dataHora = LocalDateTime.now();
             Acao acao = ordemCompra.getAcao();
 
-            Transacao transacao =  criarTransacao(ordemCompra,ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao);
+            Transacao transacao =  new Transacao(ordemCompra, ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao);
             livro.addTransacao(transacao);
             atualizarOrdens(ordemCompra, ordemVenda, quantidadeTransacao);
 
@@ -31,9 +31,7 @@ public class TransacaoManager {
         return ordemCompra.getValor() >= ordemVenda.getValor();
     }
 
-    private static synchronized Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LocalDateTime dataHora, int quantidade, double valor, Acao acao) {
-        return new Transacao(ordemCompra, ordemVenda, dataHora, quantidade, valor, acao);
-    }
+ 
 
     private static synchronized void  atualizarOrdens(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, int quantidadeTransacao) {
         int comparacao = ordemCompra.compareTo(ordemVenda);

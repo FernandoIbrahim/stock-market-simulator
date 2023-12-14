@@ -81,6 +81,8 @@ public class  LivroDeOfertas {
     public void notifyAllObservers(OrdemConcrets ordem) {
         for (AcaoObserver acaoObserver : acaoObservers) {
             acaoObserver.update(ordem.getNotificacao());
+            System.out.println("\n\n\n---------------------Notificacao--------------------");
+            System.out.println("O broker de ID: "+ acaoObserver.getId() + " foi notificado da ordem da Acao: " + ordem.getAcao().toString()+ "\n\n");
         }
 
     }

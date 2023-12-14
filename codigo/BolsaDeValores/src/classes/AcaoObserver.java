@@ -5,6 +5,7 @@ import classes.ordens.Ordem;
 public interface AcaoObserver {
 
     public void update(String notificacao);
+    public int getId();
     
     
     

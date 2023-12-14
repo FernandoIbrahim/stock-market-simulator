@@ -20,7 +20,6 @@ public class Transacao {
         this.dataHora = datahora;
         this.quantidade = quantidade;
         this.valor = valor;
-        System.out.println(ordemCompra.getQuantidade()+" "+ ordemVenda.getQuantidade()+" " + quantidade);
         this.acao = acao;
     }
 
