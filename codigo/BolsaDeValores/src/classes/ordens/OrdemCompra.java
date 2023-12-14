@@ -33,7 +33,7 @@ public class OrdemCompra extends OrdemConcrets {
     @Override
     public String getNotificacao() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return String.format("Ordem Compra  ->  acao: %s, quantidade: %d, broker: %s, valor: %.2f, data: %s}",
+        return String.format("[ORDEM COMPRA]  ->  acao: %s, quantidade: %d, broker: %s, valor: %.2f, data: %s}",
             getAcao().toString(), getQuantidade(), getBroker().toString(), getValor(), getData().format(formatter));
     }
    

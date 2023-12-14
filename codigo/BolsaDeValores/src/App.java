@@ -81,11 +81,11 @@ public class App {
         System.out.println("O broker de ID: 1 assinou a acao: PETR4, NTCO3 e BBDC3\n\n");
 
         ExecutorService executor = Executors.newFixedThreadPool(2);
-        
+
         Runnable brokerUm = () -> {
             try {
                 while (true) {
-                        Thread.sleep(2000);
+                        Thread.sleep(4000);
                         int quantidade = gerarQuantidadeRandomica(30, 100);
                         double preco = gerarValorRandomico(30.0, 100.0);                
                         // Escolhe aleatoriamente entre COMPRA e VENDA
@@ -100,7 +100,7 @@ public class App {
 
                         // Adiciona a ordem à bolsa
                         broker1.enviarOrdem(ordem);
-                        Thread.sleep(1000);
+                        Thread.sleep(4000);
                  }
                 
                     
@@ -116,7 +116,6 @@ public class App {
             try {
         
                 while (true) {
-                        Thread.sleep(1000);
                         int quantidade = gerarQuantidadeRandomica(30, 100);
                         double preco = gerarValorRandomico(30.0, 100.0);                
                         // Escolhe aleatoriamente entre COMPRA e VENDA
@@ -127,7 +126,7 @@ public class App {
                          String[] siglas = {"B3SA3", "ITSA4", "VALE3", "BBDC3", "PETR4", "MGLU3", "BBAS3", "SANB11", "ABEV3", "NTCO3", "ITUB4", "JBSS3", "WEGE3", "TIMS3", "ELET3", "COGN3", "EMBR3", "RADL3", "MRFG3", "FLRY3"};
                          String sigla = siglas[new Random().nextInt(siglas.length)];                
                         // Formata a ordem
-                         String ordem = String.format("%s;%s;%d;%.2f;BKR", tipoOrdem, sigla, quantidade, preco);  
+                         String ordem = String.format("%s;%s;%d;%.2f", tipoOrdem, sigla, quantidade, preco);  
 
                         // Adiciona a ordem à bolsa
                         broker2.enviarOrdem(ordem);
@@ -138,12 +137,48 @@ public class App {
             }catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+
+        
         };
 
         Thread ThreadBrokerDois  = new Thread(brokerDois);
 
+
+        Runnable brokerTres = () -> {
+                try {
+                    while (true) {
+                            Thread.sleep(10000);
+                            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH");
+                            LocalDateTime data = LocalDateTime.now();
+
+                            String dataFormatada = data.format(dateFormatter);
+
+                             OrderType tipoOrdem = OrderType.INFO;              
+                            // Escolhe aleatoriamente uma sigla (por exemplo, AAPL)
+
+                             String[] siglas = {"B3SA3", "ITSA4", "VALE3", "BBDC3", "PETR4", "MGLU3", "BBAS3", "SANB11", "ABEV3", "NTCO3", "ITUB4", "JBSS3", "WEGE3", "TIMS3", "ELET3", "COGN3", "EMBR3", "RADL3", "MRFG3", "FLRY3"};
+                             String sigla = siglas[new Random().nextInt(siglas.length)];                
+                            // Formata a ordem
+                             String ordem = String.format("%s;%s;%s", tipoOrdem, sigla, dataFormatada);  
+                            System.out.println("\n\n -----------------------------------------------------------\n Broker 3 enviando ordem do tipo INFO da ACAO: "+ sigla+ " do horário atual;");
+                            // Adiciona a ordem à bolsa
+                            broker3.enviarOrdemInfo(ordem);
+                            System.out.println(" -----------------------------------------------------------\n");
+                            Thread.sleep(2000);
+                    }
+
+                 
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+
+        Thread ThreadBrokerTres  = new Thread(brokerTres);
+        
         ThreadBrokerUm.start();
         ThreadBrokerDois.start();
+        ThreadBrokerTres.start();
         
 
     }

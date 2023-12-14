@@ -51,7 +51,7 @@ public class  LivroDeOfertas {
                     ordem.getData().getDayOfMonth() == diaOrdemInfo &&
                     ordem.getData().getMonthValue() == mesOrdemInfo &&
                     ordem.getData().getYear() == anoOrdemInfo)
-            .map(Ordem::toString)
+            .map(OrdemConcrets::getNotificacao)
             .collect(Collectors.joining("\n"));
         }
         return null;
@@ -81,8 +81,7 @@ public class  LivroDeOfertas {
     public void notifyAllObservers(OrdemConcrets ordem) {
         for (AcaoObserver acaoObserver : acaoObservers) {
             acaoObserver.update(ordem.getNotificacao());
-            System.out.println("\n\n\n---------------------Notificacao--------------------");
-            System.out.println("O broker de ID: "+ acaoObserver.getId() + " foi notificado da ordem da Acao: " + ordem.getAcao().toString()+ "\n\n");
+            System.out.println("[NOTIFICACAO] O broker de ID: "+ acaoObserver.getId() + " foi notificado da ordem da Acao: " + ordem.getAcao().toString());
         }
 
     }
