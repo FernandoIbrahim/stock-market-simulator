@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.DynamicTest.stream;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,6 +20,7 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
+        Locale.setDefault(Locale.US);
         BolsaDeValores bolsa = BolsaDeValores.getInstance();
 
         Acao acao1 = new Acao("B3SA3", "B3 S.A. - Brasil, Bolsa, Balcão", "Bolsa de valores");
