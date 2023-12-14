@@ -3,11 +3,14 @@ package classes;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import classes.ordens.*;
 
 public class Broker implements AcaoObserver{
-
+    
+    private static final Lock lock = new ReentrantLock();
     private BolsaDeValores bolsa;
     private List<Transacao> trasacoes;
     private List<String> notificacoes;
@@ -22,7 +25,8 @@ public class Broker implements AcaoObserver{
     }
 
     public synchronized void enviarOrdem(String ordem){  // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
-        bolsa.addOperacaoCompraVenda(ordem, this);
+            bolsa.addOperacaoCompraVenda(ordem, this);
+
     }
 
     public synchronized void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "

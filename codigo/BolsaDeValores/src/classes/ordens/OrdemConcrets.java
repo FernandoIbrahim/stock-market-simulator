@@ -5,6 +5,7 @@ package classes.ordens;
  */
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 import classes.Acao;
 import classes.Broker;
@@ -24,7 +25,9 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
      * @param valor Recebe o valor da ordem
      * @param broker Recebe o broker que será feita a ordem
      */
-     public OrdemConcrets(Acao acao, int quantidade, double valor,Broker broker){
+
+     public OrdemConcrets(Acao acao, int quantidade, double valor, Broker broker){
+        Objects.requireNonNull(broker);
         this.acao = acao;
         this.quantidade = quantidade;
         this.broker = broker;
@@ -33,6 +36,7 @@ public abstract class OrdemConcrets implements Ordem, Comparable<OrdemConcrets>{
         this.valor = valor;
      }
      
+
     
      public boolean getAtivo() {
          return ativo;

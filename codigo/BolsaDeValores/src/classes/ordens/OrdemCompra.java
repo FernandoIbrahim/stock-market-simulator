@@ -19,7 +19,7 @@ public class OrdemCompra extends OrdemConcrets {
      * @param valor Recebe o valor da ordem
      * @param broker   Recebe o broker que será feita a ordem
      */
-    public OrdemCompra(Acao acao, int quantidade, double valor,Broker broker){
+    public OrdemCompra(Acao acao, int quantidade, double valor, Broker broker){
         super(acao, quantidade, valor,broker);
     }
     /**

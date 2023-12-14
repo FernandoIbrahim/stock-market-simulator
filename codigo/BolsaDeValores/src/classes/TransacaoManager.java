@@ -8,7 +8,7 @@ import classes.ordens.*;;
 
 
 public class TransacaoManager {
-    
+
     public static synchronized Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LivroDeOfertas livro) {
         if (podeCriarTransacao(ordemCompra, ordemVenda)) {
             int quantidadeTransacao = Math.min(ordemCompra.getQuantidade(), ordemVenda.getQuantidade());

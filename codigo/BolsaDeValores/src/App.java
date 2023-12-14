@@ -131,8 +131,6 @@ public class App {
 
         ThreadBrokerUm.start();
         ThreadBrokerDois.start();
-
-        ThreadBrokerUm.join();
         
 
     }
