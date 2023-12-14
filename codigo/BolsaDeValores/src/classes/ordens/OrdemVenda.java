@@ -34,6 +34,14 @@ public class OrdemVenda extends OrdemConcrets {
         return String.format("[ORDEM VENDA] ->  acao: %s, quantidade: %d, broker: %s,  Acao: %b, valor: %.2f, data: %s}",
             getAcao(), getQuantidade(), getBroker(), getAcao(), getValor(), getData().format(formatter));
     }
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return String.format("[ORDEM VENDA] ->  acao: %s, broker: %s, valor: %.2f, data: %s}",
+            getAcao().toString(), getBroker().toString(),getValor(), getData().format(formatter));
+    }
+    
     
    
 }

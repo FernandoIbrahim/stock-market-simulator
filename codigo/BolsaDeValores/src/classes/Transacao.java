@@ -40,7 +40,7 @@ public class Transacao {
      * @return Retorna a ordem de compra(toString)
      */
     public String getNotificacao(){
-        return "\n\n---------------------------------------------------------------\n[Transacao Criada]: \n" + ordemCompra.getNotificacao() + "\n---\n" + ordemVenda.getNotificacao() + "\n---\n Quantidade: " + quantidade + "\nAcao: " + acao.toString() + "\nValor: " + valor + "\n---------------------------------------------------------------\n\n"; 
+        return "\n\n---------------------------------------------------------------\n[Transacao Criada]: \n" + ordemCompra.toString() + "\n---\n" + ordemVenda.toString() + "\n---\n Quantidade: " + quantidade + "\nAcao: " + acao.toString() + "\nValor: " + valor + "\n---------------------------------------------------------------\n\n"; 
     }
 
 
