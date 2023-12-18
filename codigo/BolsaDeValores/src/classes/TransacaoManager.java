@@ -22,12 +22,9 @@ public class TransacaoManager {
     public static synchronized Transacao criarTransacao(OrdemConcrets ordemCompra, OrdemConcrets ordemVenda, LivroDeOfertas livro) {
         if (podeCriarTransacao(ordemCompra, ordemVenda)) {
             int quantidadeTransacao = Math.min(ordemCompra.getQuantidade(), ordemVenda.getQuantidade());
-                
             double valorTransacao = ordemVenda.getValor();
-
             LocalDateTime dataHora = LocalDateTime.now();
             Acao acao = ordemCompra.getAcao();
-
             Transacao transacao =  new Transacao(ordemCompra, ordemVenda, dataHora, quantidadeTransacao, valorTransacao, acao);
             livro.addTransacao(transacao);
             atualizarOrdens(ordemCompra, ordemVenda, quantidadeTransacao);

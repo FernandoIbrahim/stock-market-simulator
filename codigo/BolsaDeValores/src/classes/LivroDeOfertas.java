@@ -17,6 +17,9 @@ import classes.ordens.OrdemVenda;
 import classes.ordens.OrderType;
 
 public class LivroDeOfertas {
+    public static final String RESET = "\u001B[0m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
 
     private List<OrdemConcrets> ordens;
     private List<Transacao> transacoes;
@@ -57,14 +60,14 @@ public class LivroDeOfertas {
     public synchronized String pesquisarOperacaoInfo(OrdemInfo ordemInfo) {
 
         String result = "";
-
         List<OrdemConcrets> ordemsResuList = new ArrayList<>();
         int horarioOrdemInfo = ordemInfo.getDateTime().getHour();
         int diaOrdemInfo = ordemInfo.getDateTime().getDayOfMonth();
         int mesOrdemInfo = ordemInfo.getDateTime().getMonthValue();
         int anoOrdemInfo = ordemInfo.getDateTime().getYear();
+
         if (ordens != null) {
-            return ordens.stream()
+            result +=  ordens.stream()
                     .filter(ordem -> ordem.getData().getHour() == horarioOrdemInfo &&
                             ordem.getData().getDayOfMonth() == diaOrdemInfo &&
                             ordem.getData().getMonthValue() == mesOrdemInfo &&
@@ -72,7 +75,11 @@ public class LivroDeOfertas {
                     .map(OrdemConcrets::getNotificacao)
                     .collect(Collectors.joining("\n"));
         }
-        return null;
+        System.out.println("\n-------------------------------------------------");
+        System.out.println(PURPLE+"[ORDEMINFO] "+ RESET + " O broker: " + ordemInfo.getBroker() +" solicitou um ordem tipo INFO das ACOES: " + ordemInfo.getAcao() + " na HORA: " + ordemInfo.getDateTime());
+        System.out.println(PURPLE+"[INFO]"+RESET+"Ordens obtidas: \n" + result);
+        System.out.println("-------------------------------------------------\n");
+        return result;
     }
 
     /**
@@ -82,22 +89,30 @@ public class LivroDeOfertas {
      */
     public synchronized int verficarOrdens() {
         int count = 0;
-        for (OrdemConcrets ordemCompra : ordens) {
-            for (OrdemConcrets ordemVenda : ordens) {
-                if (ordemCompra != ordemVenda && ordemCompra.getType() == OrderType.COMPRA
-                        && ordemVenda.getType() == OrderType.VENDA && ordemVenda.getAtivo() == true
-                        && ordemCompra.getAtivo() == true) {
-                    Transacao transacao = TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this);
-                    if (transacao != null) {
-                        System.out.println(transacao.getNotificacao());
-                        count++;
-                    }
-                }
 
+        List<OrdemConcrets> compras = ordens.stream()
+        .filter(ordem -> ordem.getType() == OrderType.COMPRA && ordem.getAtivo())
+        .collect(Collectors.toList());
+
+        // Filtra as ordens de venda
+        List<OrdemConcrets> vendas = ordens.stream()
+        .filter(ordem -> ordem.getType() == OrderType.VENDA && ordem.getAtivo())
+        .collect(Collectors.toList());
+
+        for (OrdemConcrets ordemCompra : compras) {
+            for (OrdemConcrets ordemVenda : vendas) {
+                Transacao transacao = TransacaoManager.criarTransacao(ordemCompra, ordemVenda, this);
+                if (transacao != null) {
+                    System.out.println(transacao.getNotificacao());
+                    count++;
+                }
             }
+
         }
+        
         return count;
     }
+    
     /**
      * Notifica todos os observers de uma ordem
      * @param ordem Recebe uma ordem
@@ -105,11 +120,11 @@ public class LivroDeOfertas {
     public void notifyAllObservers(OrdemConcrets ordem) {
         for (AcaoObserver acaoObserver : acaoObservers) {
             acaoObserver.update(ordem.getNotificacao());
-            System.out.println("[NOTIFICACAO] O broker de ID: " + acaoObserver.getId()
+            System.out.println(CYAN + "[NOTIFICACAO]"+ RESET +" O broker de ID: " + acaoObserver.getId()
                     + " foi notificado da ordem da Acao: " + ordem.getAcao().toString());
         }
-
     }
+    
     /**
      * Adiciona um observer ao livro de ofertas
      * @param acaoObserver Recebe um observer
@@ -167,4 +182,5 @@ public class LivroDeOfertas {
     public List<Transacao> getTransacoes() {
         return transacoes;
     }
+    
 }

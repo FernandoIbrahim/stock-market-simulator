@@ -11,6 +11,9 @@ import classes.Broker;
 
 public class OrdemVenda extends OrdemConcrets {
 
+    public static final String BLUE = "\u001B[34m";
+    public static final String RESET = "\u001B[0m";
+
     private final OrderType tOrderType = OrderType.VENDA;
     /**
      * Construtor da classe OrdemVenda
@@ -31,14 +34,14 @@ public class OrdemVenda extends OrdemConcrets {
     @Override
     public String getNotificacao() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return String.format("[ORDEM VENDA] ->  acao: %s, quantidade: %d, broker: %s,  Acao: %b, valor: %.2f, data: %s}",
+        return String.format(BLUE+ "[ORDEM VENDA]"+ RESET+ " ->  acao: %s, quantidade: %d, broker: %s,  Acao: %b, valor: %.2f, data: %s}",
             getAcao(), getQuantidade(), getBroker(), getAcao(), getValor(), getData().format(formatter));
     }
 
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return String.format("[ORDEM VENDA] ->  acao: %s, broker: %s, valor: %.2f, data: %s}",
+        return String.format(BLUE+ "[ORDEM VENDA]"+ RESET+ " ->  acao: %s, broker: %s, valor: %.2f, data: %s}",
             getAcao().toString(), getBroker().toString(),getValor(), getData().format(formatter));
     }
     

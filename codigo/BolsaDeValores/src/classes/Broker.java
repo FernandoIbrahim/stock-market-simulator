@@ -43,11 +43,6 @@ public class Broker implements AcaoObserver{
      */
     public synchronized void enviarOrdemInfo(String ordem){   // a string deve seguir o seguinte fomato " compra; petr4; 100; 26,46; BKR "
         notificacoes.add(bolsa.pesquisarOrdemInfo(ordem, this));
-        if(bolsa.pesquisarOrdemInfo(ordem, this) != "")
-            System.out.println("As ordens na hora solicitada foram: \n" + bolsa.pesquisarOrdemInfo(ordem, this)+ "\n\n");
-        else{
-            System.out.println("As ordens na hora solicitada foram: nulas");
-        }
     }
     /**
      * 

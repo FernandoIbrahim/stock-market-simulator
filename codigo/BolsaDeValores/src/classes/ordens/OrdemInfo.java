@@ -12,6 +12,7 @@ import classes.Broker;
 
 public class OrdemInfo implements Ordem  {
     
+    
     private final OrderType tOrderType = OrderType.INFO;
     private Acao acao;
     private LocalDateTime dateTime;
@@ -44,6 +45,10 @@ public class OrdemInfo implements Ordem  {
 
     public LocalDateTime getDateTime() {
         return dateTime;
+    }
+
+    public Broker getBroker() {
+        return broker;
     }
 
 }

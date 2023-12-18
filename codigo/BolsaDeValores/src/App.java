@@ -15,13 +15,12 @@ import classes.ordens.*;
 
 public class App {
 
-    private static final Lock lock = new ReentrantLock();
-    private static volatile boolean compra = true; // Alternância entre ordens de compra e venda
 
     public static void main(String[] args) throws InterruptedException {
 
         Locale.setDefault(Locale.US);
         BolsaDeValores bolsa = BolsaDeValores.getInstance();
+
 
         Acao acao1 = new Acao("B3SA3", "B3 S.A. - Brasil, Bolsa, Balcão", "Bolsa de valores");
         Acao acao2 = new Acao("ITSA4", "Itaú Unibanco Holding S.A.", "Banco");
@@ -87,7 +86,6 @@ public class App {
         Runnable brokerUm = () -> {
             try {
                 while (true) {
-                        Thread.sleep(4000);
                         int quantidade = gerarQuantidadeRandomica(30, 100);
                         double preco = gerarValorRandomico(30.0, 100.0);                
                         // Escolhe aleatoriamente entre COMPRA e VENDA
@@ -102,7 +100,7 @@ public class App {
 
                         // Adiciona a ordem à bolsa
                         broker1.enviarOrdem(ordem);
-                        Thread.sleep(4000);
+                        Thread.sleep(2000);
                  }
                 
                     
@@ -163,10 +161,8 @@ public class App {
                              String sigla = siglas[new Random().nextInt(siglas.length)];                
                             // Formata a ordem
                              String ordem = String.format("%s;%s;%s", tipoOrdem, sigla, dataFormatada);  
-                            System.out.println("\n\n -----------------------------------------------------------\n Broker 3 enviando ordem do tipo INFO da ACAO: "+ sigla+ " do horário atual;");
                             // Adiciona a ordem à bolsa
                             broker3.enviarOrdemInfo(ordem);
-                            System.out.println(" -----------------------------------------------------------\n");
                             Thread.sleep(2000);
                     }
 
