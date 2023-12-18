@@ -2,7 +2,7 @@
 
 ## Bolsa de Valores - Sistema de Simulação
 
-Este repositório contém a implementação de um sistema de simulação de uma bolsa de valores, desenvolvido como parte do trabalho prático sobre Princípios SOLID e Padrões de Projeto, realizado em dupla na disciplina de Programação modular.
+Este repositório contém a implementação de um sistema de simulação de uma bolsa de valores, desenvolvido como parte do trabalho prático sobre Princípios SOLID e Padrões de Projeto, realizado em dupla na disciplina de Programação Modular.
 
 ### Integrantes do Grupo
 - Fernando Antônio Ferreira Ibrahim
