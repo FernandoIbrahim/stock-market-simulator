@@ -6,7 +6,7 @@ Este repositório contém a implementação de um sistema de simulação de uma 
 
 ### Integrantes do Grupo
 - Fernando Antônio Ferreira Ibrahim
-- Gabreiel Ferreira Amaral
+- Gabriel Ferreira Amaral
 
 ### Estrutura do Projeto
 O projeto está estruturado conforme os princípios SOLID e utiliza padrões de projeto como Singleton, Strategy, Factory e Observer. A implementação foi realizada em Java, fazendo uso de Threads para simular a interação de múltiplos brokers com a bolsa de valores.
